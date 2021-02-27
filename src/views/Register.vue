@@ -1,7 +1,7 @@
 <template>
   <div class="register">
     
-    <div v-if="error" class="error">{ error.message }</div>
+    <div v-if="error" class="error">{{error.message}}</div>
     <h1>Register</h1>
     <hr>
 
@@ -27,7 +27,7 @@ export default {
             try {
                 const user = firebase.auth().createUserWithEmailAndPassword(this.email, this.password);
                 console.log(user)
-                this.$router.replace({name: "Home"})
+                this.$router.push('/')
             } catch (error) {
                 console.log(error)
             }
