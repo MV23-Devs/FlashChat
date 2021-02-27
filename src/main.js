@@ -6,6 +6,7 @@ import router from './router'
 import { firebase } from '@firebase/app'
 import 'firebase/auth'
 import 'firebase/firestore'
+import vuetify from './plugins/vuetify';
 
 // firebase init - add your own config here
 // const firebaseConfig = {
@@ -28,7 +29,7 @@ var firebaseConfig = {
   measurementId: "G-D2YL9Q1HZN"
 };
 
-firebase.initializeApp(firebaseConfig) 
+firebase.initializeApp(firebaseConfig)
 
 
 Vue.use(ElementUI);
@@ -38,5 +39,6 @@ Vue.config.productionTip = false
 
 new Vue({
   router,
+  vuetify,
   render: h => h(App)
 }).$mount('#app') 

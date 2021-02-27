@@ -1,13 +1,12 @@
-
 <template>
   <div id="app">
     <div id="nav">
-     
+
       <router-link to="/"> <span class="NavButtons">Home </span></router-link>
       <router-link to="/collection"> <span class="NavButtons"> Collection </span></router-link>
       <Header></Header>
     </div>
-      
+
 
     <router-view />
     <Footer></Footer>
@@ -45,8 +44,8 @@ export default {
 </script>
 
 <style>
-/* unused css garbage */
-/* #app {
+/* unused css garbage /
+/ #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

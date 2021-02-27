@@ -4,7 +4,6 @@
     <!-- <DisplayCard :clue="DisplayClue" :answer="DisplayAnswer"/> -->
     <!-- <VideoChat msg="Flash Call"/> -->
     <MainScreen/>
-    <flashcard/>
   </div>
 </template>
 
@@ -13,13 +12,12 @@
 // import DisplayCard from '../components/DisplayCard.vue'
 //import VideoChat from '../components/VideoChat.vue'
 import MainScreen from '../components/MainScreen.vue'
-import Flashcard from '../components/Flashcard.vue'
 
 export default {
   name: 'App',
   components: {
     MainScreen,
-    Flashcard
+
     // DisplayCard,
     //VideoChat
   },
