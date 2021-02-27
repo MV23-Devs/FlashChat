@@ -22,7 +22,7 @@ const routes = [
     component: Login
   },
   {
-    path: '/videopage',
+    path: '/VideoPage',
     name: 'VideoPage',
     component: VideoPage
   },

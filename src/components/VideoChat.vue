@@ -135,10 +135,12 @@ export default {
       this.disableJoin = true;
     },
     leaveEvent() {
+      this.$router.push("/");
       this.disableJoin = false;
       this.rtc
         .leaveChannel()
         .then(() => {
+
           this.$message({
             message: "Leave Success",
             type: "success",
