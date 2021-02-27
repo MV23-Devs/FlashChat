@@ -1,8 +1,9 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
+      <router-link to="/">Home</router-link>
       <router-link to="/login">Login</router-link>
+      <router-link to="/register">Register</router-link>
     </div>
     <router-view/>
   </div>
@@ -19,6 +20,14 @@
 
 #nav {
   padding: 30px;
+}
+
+#nav a {
+  padding-right: 20px;
+}
+
+#nav a:last-of-type {
+  padding-right: 0px;
 }
 
 #nav a {
