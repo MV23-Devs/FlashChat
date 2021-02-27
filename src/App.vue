@@ -12,6 +12,15 @@
   </div>
 </template>
 
+<style>
+/* unused css garbage */
+/* #app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+}
 
 <script>
 import Header from "./components/Header.vue";
@@ -27,5 +36,9 @@ export default {
 </script>
 
 
-<style src="./assets/styles/Nav.css">
+#nav a.router-link-exact-active {
+  color: #42b983;
+} */
 </style>
+
+<style src="./assets/styles/Nav.css"></style>
