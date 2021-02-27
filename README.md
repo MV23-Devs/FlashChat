@@ -1,4 +1,4 @@
-# FlashCall
+# FlashChat
 
 ## Project setup
 ```
