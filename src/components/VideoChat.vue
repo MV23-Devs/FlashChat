@@ -29,14 +29,22 @@
         ></el-input>
       </div>
       <div class="agora-button">
-        <el-button type="primary" @click="joinEvent" :disabled="disableJoin"
+        <el-button
+          type="primary"
+          class="Buttons1"
+          id="JoinBtn"
+          @click="joinEvent"
+          :disabled="disableJoin"
           >join</el-button
         >
+        <br />
         <el-button
           type="primary"
           @click="leaveEvent"
           plain
           :disabled="!disableJoin"
+          class="Buttons1"
+          id="LeaveBtn"
           >leave</el-button
         >
       </div>
@@ -98,7 +106,7 @@ export default {
         this.judge("Channel Name");
         return;
       }
-      this.$router.push('/VideoPage')
+      this.$router.push("/VideoPage");
       this.rtc
         .joinChannel(this.option)
         .then(() => {
@@ -206,7 +214,6 @@ export default {
 }
 .agora-box {
   display: inline-block;
-
 }
 
 .agora-view {
@@ -238,16 +245,35 @@ export default {
   font-weight: bold;
 }
 .agora-button {
-  display: flex;
-  width: 160px;
+  display: inline-block;
+  width: 180px;
   justify-content: space-between;
   margin: 20px;
 }
+
+
+
+.Buttons1 {
+  margin: 5px;
+  position: relative;
+  border-radius: 20px;
+  border: 0px solid #000;
+  padding: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
+  transition: padding 1s;
+}
+.Buttons1:hover {
+  animation-fill-mode: forwards;
+  padding-left: 70px;
+  padding-right: 70px;
+  transition: padding 1s;
+}
+
 </style>
 
 <style>
 video {
   position: relative !important;
-  left: 0px;
 }
 </style>
