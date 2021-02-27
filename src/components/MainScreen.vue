@@ -1,6 +1,7 @@
 <template>
     <div id="main">
-        <button>Join a Meeting</button>
+        <h1>FLASH CHAT MOTHAFUCKAS</h1>
+        <button v-on:click="goToVideoPage" >Join a Meeting</button>
     </div>
 </template>
  
@@ -11,7 +12,13 @@
             messages: {
                 type: Array,
             },
+        },
+        methods: {
+            goToVideoPage() {
+                this.$router.push("/VideoPage")
+            }
         }
+        
     }
 </script>
 

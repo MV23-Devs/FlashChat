@@ -11,7 +11,7 @@
 
 // import DisplayCard from '../components/DisplayCard.vue'
 //import VideoChat from '../components/VideoChat.vue'
-import MainScreen from '../components/VideoChat.vue'
+import MainScreen from '../components/MainScreen.vue'
 
 export default {
   name: 'App',
