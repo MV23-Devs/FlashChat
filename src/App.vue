@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div id="nav">
-      <Header />
+      <Header></Header>
       <router-link to="/">Home</router-link>
       <router-link to="/login">Login</router-link>
     </div>
@@ -10,6 +10,35 @@
     <Footer />
   </div>
 </template>
+
+<script>
+
+import Header from "./components/Header"
+
+import { firebase } from '@firebase/app'
+import "firebase/auth"
+export default {
+  components: {
+    Header
+  },
+  mounted() {
+    firebase.auth().onAuthStateChanged(function (user) {
+      if (user) {
+        // User is signed in.
+        var email = user.email;
+        // var photoURL = user.photoURL;
+        // var uid = user.uid;
+
+        console.log(email)
+        // ...
+      } else {
+        // User is signed out.
+        // ...
+      }
+    });
+  },
+};
+</script>
 
 <style>
 /* unused css garbage */

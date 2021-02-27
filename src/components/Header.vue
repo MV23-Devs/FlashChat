@@ -3,23 +3,27 @@
     <div class="logged">
       Logged in
       <span v-if="loggedIn">yes.</span>
-      <span v-else>no </span>
+      <span v-else
+        >no
+
+      </span>
         <button @click="signOut">Sign Out</button>
     </div>
   </div>
 </template>
 
 <script>
-import { firebase } from '@firebase/app'
-import "firebase/auth"
+import { firebase } from "@firebase/app";
+import "firebase/auth";
 export default {
+  name: "Header",
   mounted() {
     this.setupFirebase();
   },
   data() {
     return {
-      // loggedIn: false
-    }
+      loggedIn: false
+    };
   },
   methods: {
     setupFirebase() {
@@ -43,15 +47,6 @@ export default {
       } catch (error) {
         console.log(error);
       }
-    }
-  },
-  name: "DisplayCard",
-  props: {
-    clue: {
-      type: String,
-    },
-    answer: {
-      type: String,
     },
   },
 };
