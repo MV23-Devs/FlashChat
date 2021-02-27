@@ -1,7 +1,7 @@
 <template>
     <div id="main">
         <h1>FLASH CHAT </h1>
-        <button v-on:click="goToVideoPage" >Join a Meeting</button>
+        <v-btn elevation="24" outlined raised tile v-on:click="goToVideoPage" >Join a Meeting</v-btn>
     </div>
 </template>
  
@@ -27,8 +27,6 @@ button {
     margin: 5px;
     font-size: 30px;
     position: relative;
-    border-radius: 40px;
-    border: 0px solid #000;
     padding: 20px;
     padding-left: 70px;
     padding-right: 70px;
