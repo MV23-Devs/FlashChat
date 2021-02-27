@@ -46,6 +46,9 @@ export default {
         console.log(err);
       }
     },
+    signIn() {
+      this.$router.push("/login");
+    }
   },
 };
 </script>

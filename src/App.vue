@@ -4,7 +4,6 @@
     <div id="nav">
      
       <router-link to="/"> <span class="NavButtons">Home </span></router-link>
-      <router-link to="/login"> <span class="NavButtons"> Login </span></router-link>
       <router-link to="/collection"> <span class="NavButtons"> Collection </span></router-link>
       <Header></Header>
     </div>
