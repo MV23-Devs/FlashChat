@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <br>
     <!-- <DisplayCard :clue="DisplayClue" :answer="DisplayAnswer"/> -->
     <VideoChat msg="Flash Call"/>
   </div>
