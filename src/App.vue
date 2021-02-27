@@ -1,3 +1,18 @@
+
+
+<script>
+
+import Footer from './components/Footer.vue'
+
+export default {
+  name: 'App',
+  components: {
+    Footer,
+  }
+}
+</script>
+
+
 <template>
   <div id="app">
     <div id="nav">
@@ -6,9 +21,13 @@
       <router-link to="/register">Register</router-link>
     </div>
     <router-view/>
+
+    <Footer />
   </div>
+  
 </template>
 
+<<<<<<< HEAD
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -38,4 +57,7 @@
 #nav a.router-link-exact-active {
   color: #42b983;
 }
+=======
+<style src="./assets/styles/Nav.css">
+>>>>>>> 999050f0218a699218dfbc23120a65fc556fbd79
 </style>
