@@ -1,15 +1,15 @@
 <template>
   <div class="login">
     <h1>Login</h1>
-    <hr>
+    <!-- <hr> -->
     <form @submit.prevent="pressed">
-      <div class="login">
-        <input type="email" v-model="email" placeholder="Email">
+      <div class="email">
+        <input id="email" class="inputField" type="email" v-model="email" placeholder="Email">
       </div>
       <div class="password">
-            <input type="password" v-model="password" placeholder="Password:">
+            <input id="pass" class="inputField" type="password" v-model="password" placeholder="Password:">
         </div>
-        <button type="submit">Register</button>
+        <button id="submitBtn" type="submit">Login</button>
     </form>
 
     <span>Don't Have an Account? Click here to </span>
@@ -48,3 +48,5 @@ export default {
         font-size: 20px;
     }
 </style>
+
+<style src="../assets/styles/Login.css"></style>
