@@ -17,6 +17,7 @@ button {
     padding-left: 30px;
     padding-right: 30px;
     transition: padding 1s;
+    outline: none;
 }
 
 
