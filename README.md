@@ -1,4 +1,4 @@
-# studychat
+# FlashCall
 
 ## Project setup
 ```
