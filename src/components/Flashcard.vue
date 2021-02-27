@@ -4,14 +4,12 @@
     max-width="344"
   >
     <v-card-text>
-      <div>Word of the Day</div>
+      <div>Card:</div>
       <p class="display-1 text--primary">
-        be•nev•o•lent
+        {{this.cardname}}
       </p>
-      <p>adjective</p>
       <div class="text--primary">
-        well meaning and kindly.<br>
-        "a benevolent smile"
+        <p>{{ this.answer }}</p>
       </div>
     </v-card-text>
     <v-card-actions>
@@ -31,17 +29,28 @@
 
     export default {
         name: "Flashcard",
+        data() {
+          return {
+            cardname: "",
+            answer: ""
+          }
+        },
         mounted() {
-            firebase
-                .firestore()
-                .collection("accounts")
-                .doc(firebase.auth().currentUser.email)
-                .collection("collections")
-                .doc("rest")
-                .get()
-                .then(doc => {
-                    console.log(doc.data())
-                })
+          firebase
+          .firestore()
+          .collection("accounts")
+          .doc(firebase.auth().currentUser.email)
+          .collection("collections")
+          .doc("Test")
+          .collection("cards")
+          .doc("Fad9GLEXNnxbnNxbeF1J")
+          .get()
+          .then(doc => {
+            console.log(doc.data());
+            this.cardname = doc.data().key;
+            this.answer = doc.data().val;
+            console.log(this.cardname, this.answer);
+          })
         }
     }
  </script>
