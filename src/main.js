@@ -28,7 +28,7 @@ var firebaseConfig = {
   measurementId: "G-D2YL9Q1HZN"
 };
 
-firebase.initializeApp(firebaseConfig)
+firebase.initializeApp(firebaseConfig) 
 
 
 Vue.use(ElementUI);

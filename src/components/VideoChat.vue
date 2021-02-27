@@ -98,6 +98,7 @@ export default {
         this.judge("Channel Name");
         return;
       }
+      this.$router.push('/VideoPage')
       this.rtc
         .joinChannel(this.option)
         .then(() => {
