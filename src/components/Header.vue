@@ -2,7 +2,7 @@
   <div id="header">
     <div class="logged">
       <span v-if="loggedIn">Logged in as {{ this.user.email }}  <button @click="signOut">Sign Out</button></span>
-      <span v-else>You are not logged in</span>
+      <span v-else>You are not logged in <button @click="signIn">Sign In</button></span>
     </div>
   </div>
 </template>
