@@ -1,0 +1,28 @@
+#header {
+    display: inline-block;
+    /* background-color: red; */
+    float: right;
+}
+
+.logged {
+    color: white;
+}
+
+.logged > button {
+    margin: 5px;
+    position: relative;
+    border-radius: 20px;
+    border: 0px solid #000;
+    padding: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    transition: padding 1s;
+}
+
+
+.logged > button:hover {
+    animation-fill-mode: forwards;
+    padding-left: 70px;
+    padding-right: 70px;
+    transition: padding 1s;
+}

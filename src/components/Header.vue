@@ -1,13 +1,9 @@
 <template>
-  <div>
+  <div id="header">
     <div class="logged">
-      
-      <span v-if="loggedIn">Logged in as {{this.user.email}}</span>
-      <span v-else
-        >no
-
-      </span>
-        <button @click="signOut">Sign Out</button>
+      <span v-if="loggedIn">Logged in as {{ this.user.email }}</span>
+      <span v-else> You are not logged in: </span>
+      <button @click="signOut">Sign Out</button>
     </div>
   </div>
 </template>
@@ -23,12 +19,12 @@ export default {
   data() {
     return {
       loggedIn: false,
-      user: null
+      user: null,
     };
   },
   methods: {
     setupFirebase() {
-      firebase.auth().onAuthStateChanged(user => {
+      firebase.auth().onAuthStateChanged((user) => {
         if (user) {
           // User is signed in.
           console.log("signed in");
@@ -55,5 +51,5 @@ export default {
 };
 </script>
 
-<style src='../assets/styles/DisplayCard.css'>
+<style src='../assets/styles/Header.css'>
 </style>

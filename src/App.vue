@@ -5,9 +5,9 @@
      
       <router-link to="/"><span class="NavBtns">Home </span></router-link>
       <router-link to="/login"><span class="NavBtns">Login </span></router-link>
-      <br />
-    </div>
       <Header></Header>
+    </div>
+      
 
     <router-view />
     <Footer></Footer>
