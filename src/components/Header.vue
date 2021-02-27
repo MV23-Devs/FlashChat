@@ -1,9 +1,8 @@
 <template>
   <div id="header">
     <div class="logged">
-      <span v-if="loggedIn">Logged in as {{ this.user.email }}</span>
-      <span v-else> You are not logged in: </span>
-      <button @click="signOut">Sign Out</button>
+      <span v-if="loggedIn">Logged in as {{ this.user.email }}  <button @click="signOut">Sign Out</button></span>
+      <span v-else>You are not logged in</span>
     </div>
   </div>
 </template>
