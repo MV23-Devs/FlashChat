@@ -2,20 +2,23 @@
   <div id="app">
     <br>
     <!-- <DisplayCard :clue="DisplayClue" :answer="DisplayAnswer"/> -->
-    <VideoChat msg="Flash Call"/>
+    <!-- <VideoChat msg="Flash Call"/> -->
+    <MainScreen/>
   </div>
 </template>
 
 <script>
 
 // import DisplayCard from '../components/DisplayCard.vue'
-import VideoChat from '../components/VideoChat.vue'
+//import VideoChat from '../components/VideoChat.vue'
+import MainScreen from '../components/VideoChat.vue'
 
 export default {
   name: 'App',
   components: {
+    MainScreen
     // DisplayCard,
-    VideoChat
+    //VideoChat
   },
   data() {
     return {
