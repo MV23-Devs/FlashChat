@@ -147,8 +147,8 @@ export default {
 <style scoped>
   .hello {
     margin: auto;
-    /* background-color: red; */
-    display: inline-block;
+    background-color: red;
+    
 }
   .agora-title {
     font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -158,6 +158,7 @@ export default {
     color: #2c3e50;
   }
   .agora-view {
+    margin: auto;
     display: flex;
     flex-wrap: wrap;
   }
@@ -165,17 +166,13 @@ export default {
     width: 320px;
     height: 240px;
     margin: 20px;
-    background-color: red !important;
-    padding: 10px;
   }
   .agora-video > div  {
-    width: 320px;
-    height: 240px;
+    width: 640px;
+    height: 480px;
     padding: 10px;
-    margin: 0px;
-    position: absolute !important;
-    left: 0;
-    background-color: blue !important;
+    margin: auto;
+    position: relative !important;
     overflow: visible;
   }
   /* .agora-video > *  {
@@ -203,9 +200,13 @@ export default {
     justify-content: space-between;
     margin: 20px;
   }
-  video {
-    position: absolute !important;
+  
+  
+</style>
+
+<style>
+video {
+    position: relative !important;
     left: 0px;
   }
-  
 </style>
