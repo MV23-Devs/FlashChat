@@ -9,8 +9,12 @@
                 </tr>
             </tbody>
         </table>
+
+        <FlashcardForm />
     </div>
 </template>
+
+import FlashcardForm from './components/FlashcardForm.vue'
 
 <script>
     export default {
