@@ -1,9 +1,16 @@
 #Footer {
     background-color: #222;
-    color:#fff;
+    text-decoration: none;
     position: absolute;
     bottom: 0px;
     text-align: center;
-    width: 100%;
+    
+    padding: 20px;
     min-height: 100px;
+    width: 100%;
+}
+
+#Footer > a {
+    color:#fff;
+    text-decoration: none;
 }

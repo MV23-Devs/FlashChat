@@ -272,6 +272,15 @@ export default {
   transition: padding 1s;
 }
 
+#JoinBtn {
+  background-color: deepskyblue;
+}
+
+
+#LeaveBtn {
+  color: deepskyblue;
+}
+
 </style>
 
 <style>

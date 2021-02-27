@@ -3,11 +3,11 @@
   <div id="app">
     <div id="nav">
      
-      <router-link to="/"><span class="NavBtns">Home </span></router-link>
-      <router-link to="/login"><span class="NavBtns">Login </span></router-link>
-      <br />
-    </div>
+      <router-link to="/"> <span class="NavButtons">Home </span></router-link>
+      <router-link to="/login"> <span class="NavButtons"> Login </span></router-link>
       <Header></Header>
+    </div>
+      
 
     <router-view />
     <Footer></Footer>
@@ -73,4 +73,4 @@ export default {
 } */
 </style>
 
-<style src="./assets/styles/Nav.css"></style>
+<style src="./assets/styles/Nav.css"  ></style>
