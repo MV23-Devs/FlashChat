@@ -2,9 +2,25 @@
   <div class="login">
     <h1>Collection</h1>
     <hr />
+    <h3>Create a New Collection</h3>
+    <form @submit.prevent="pressed2">
+      <div class="name">
+        <input type="text" v-model="name" placeholder="Collection Name:" />
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+    <hr />
+    <h3>View Collection</h3>
+    <select v-model="current" @change.prevent="opened">
+      <option v-for="item in collections" :key="item.name">
+        {{ item.name }}
+      </option>
+    </select>
     <ul>
-      <li v-for="card in collection" :key="card.key">{{ card.key }}</li>
+      <li v-for="card in cards" :key="card.name">{{ card.key }}</li>
     </ul>
+    <hr />
+    <h3>Add Cards</h3>
     <form @submit.prevent="pressed">
       <div class="key">
         <input type="text" v-model="key" placeholder="Key:" />
@@ -23,44 +39,101 @@ import "firebase/auth";
 
 export default {
   mounted() {
-    firebase
-      .firestore()
-      .collection("accounts")
-      .doc(firebase.auth().currentUser.email)
-      .collection("collections")
-      .onSnapshot((ref) => {
-        ref.docChanges().forEach((change) => {
-          const { newIndex, oldIndex, doc, type } = change;
-          if (type === "added") {
-            this.collection.push(doc.data());
-          } else if (type === "modified") {
-            this.collection.splice(oldIndex, 1);
-            this.collection.splice(newIndex, 0, doc.data());
-          } else if (type === "removed") {
-            this.collection.splice(oldIndex, 1);
-          }
-        });
-      });
+    this.load();
   },
   data() {
     return {
-      collection: [],
-      key: '',
-      val: '',
+      collections: [],
+      cards: [],
+      key: "",
+      val: "",
+      name: "",
+      current: "",
+      open: false,
     };
   },
   methods: {
-    async pressed() {
-      try {
-        await firebase.firestore().collection("accounts")
+    opened() {
+      this.open = true;
+      this.load();
+    },
+    async load() {
+      console.log(this.open);
+      if (this.open) {
+        this.cards = [];
+        firebase
+          .firestore()
+          .collection("accounts")
+          .doc(firebase.auth().currentUser.email)
+          .collection("collections")
+          .doc(this.current)
+          .collection("cards")
+          .onSnapshot((ref) => {
+            ref.docChanges().forEach((change) => {
+              const { newIndex, oldIndex, doc, type } = change;
+              if (type === "added") {
+                this.cards.push(doc.data());
+              } else if (type === "modified") {
+                this.cards.splice(oldIndex, 1);
+                this.cards.splice(newIndex, 0, doc.data());
+              } else if (type === "removed") {
+                this.cards.splice(oldIndex, 1);
+              }
+            });
+          });
+      }
+      this.collections = [];
+      firebase
+        .firestore()
+        .collection("accounts")
         .doc(firebase.auth().currentUser.email)
         .collection("collections")
-        .add({
-          key: this.key,
-          val: this.val
+        .onSnapshot((ref) => {
+          ref.docChanges().forEach((change) => {
+            const { newIndex, oldIndex, doc, type } = change;
+            if (type === "added") {
+              this.collections.push(doc.data());
+            } else if (type === "modified") {
+              this.collections.splice(oldIndex, 1);
+              this.collections.splice(newIndex, 0, doc.data());
+            } else if (type === "removed") {
+              this.collections.splice(oldIndex, 1);
+            }
+          });
         });
+    },
+    async pressed() {
+      try {
+        if (this.open) {
+          await firebase
+            .firestore()
+            .collection("accounts")
+            .doc(firebase.auth().currentUser.email)
+            .collection("collections")
+            .doc(this.current)
+            .collection("cards")
+            .add({
+              key: this.key,
+              val: this.val,
+            });
+        }
       } catch (err) {
-        console.log(err)
+        console.log(err);
+      }
+    },
+    async pressed2() {
+      try {
+        await firebase
+          .firestore()
+          .collection("accounts")
+          .doc(firebase.auth().currentUser.email)
+          .collection("collections")
+          .doc(this.name)
+          .set({
+            name: this.name,
+          });
+      } catch (err) {
+        console.log(err);
       }
     },
   },
