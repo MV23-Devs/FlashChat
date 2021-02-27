@@ -27,7 +27,6 @@ export default {
   
 </template>
 
-<<<<<<< HEAD
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -57,7 +56,4 @@ export default {
 #nav a.router-link-exact-active {
   color: #42b983;
 }
-=======
-<style src="./assets/styles/Nav.css">
->>>>>>> 999050f0218a699218dfbc23120a65fc556fbd79
 </style>

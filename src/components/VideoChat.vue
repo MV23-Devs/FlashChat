@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <div class="agora-title-box">
-      <div class="agora-title">FLASH STUDY MOTHAFUCKAS</div>
+      <div class="agora-title">FLASH STUDY</div>
     </div>
     <div class='agora-box'>
       <div class="agora-input">
@@ -145,6 +145,11 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+  .hello {
+    margin: auto;
+    /* background-color: red; */
+    display: inline-block;
+}
   .agora-title {
     font-family: Avenir, Helvetica, Arial, sans-serif;
     font-size: 32px;
@@ -160,7 +165,29 @@ export default {
     width: 320px;
     height: 240px;
     margin: 20px;
+    background-color: red !important;
+    padding: 10px;
   }
+  .agora-video > div  {
+    width: 320px;
+    height: 240px;
+    padding: 10px;
+    margin: 0px;
+    position: absolute !important;
+    left: 0;
+    background-color: blue !important;
+    overflow: visible;
+  }
+  /* .agora-video > *  {
+    width: 320px;
+    height: 240px;
+    padding: 10px;
+    position: absolute !important;
+   
+    background-color: purple !important;
+    left: 50px;
+  }
+   */
   .agora-input {
     margin: 20px;
     width: 320px;
@@ -176,8 +203,9 @@ export default {
     justify-content: space-between;
     margin: 20px;
   }
-  .agora-video {
-    width: 320px;
-    height: 240px;
+  video {
+    position: absolute !important;
+    left: 0px;
   }
+  
 </style>

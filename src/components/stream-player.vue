@@ -33,7 +33,13 @@ export default {
 
 <style>
 .agora-video-player {
-  height: 100%;
-  width: 100%;
+
+  margin: 0px !important;
+  width: 640px;
+  
+  padding: 0px;
+  height: 480px;
+
 }
+
 </style>
