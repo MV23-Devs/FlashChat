@@ -1,17 +1,24 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <MainScreen :messages="messages" msg="Sup Hoes"/>
+    <FlashcardForm />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import MainScreen from './components/MainScreen.vue'
+import FlashcardForm from './components/FlashcardForm.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    MainScreen,
+    FlashcardForm
+  },
+  data() {
+    return {
+      messages: ["lol", "yeeyee", "haw", "shamone"]
+    }
   }
 }
 </script>
