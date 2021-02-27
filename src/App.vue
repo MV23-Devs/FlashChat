@@ -28,7 +28,8 @@ export default {
 </template>
 
 <style>
-#app {
+/* unused css garbage */
+/* #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -55,5 +56,7 @@ export default {
 
 #nav a.router-link-exact-active {
   color: #42b983;
-}
+} */
 </style>
+
+<style src="./assets/styles/Nav.css"></style>
