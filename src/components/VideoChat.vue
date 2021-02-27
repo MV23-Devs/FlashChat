@@ -3,7 +3,7 @@
     <div class="agora-title-box">
       <div class="agora-title">FLASH Chat</div>
     </div>
-    <div class="agora-box">
+    <div class="agora-box" id="MainBox">
       <div class="agora-input">
         <div class="agora-text">* Appid</div>
         <el-input
@@ -98,6 +98,8 @@ export default {
 
   methods: {
     joinEvent() {
+      document.getElementById("MainBox").style.display = "none";
+
       if (!this.option.appid) {
         this.judge("Appid");
         return;
