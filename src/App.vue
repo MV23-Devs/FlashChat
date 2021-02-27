@@ -1,25 +1,29 @@
+
 <template>
   <div id="app">
     <div id="nav">
-      <Header></Header>
-      <router-link to="/">Home</router-link>
-      <router-link to="/login">Login</router-link>
+     
+      <router-link to="/"><span class="NavBtns">Home </span></router-link>
+      <router-link to="/login"><span class="NavBtns">Login </span></router-link>
+      <br />
     </div>
-    <router-view />
+      <Header></Header>
 
-    <Footer />
+    <router-view />
+    <Footer></Footer>
   </div>
 </template>
 
 <script>
 
 import Header from "./components/Header"
-
+import Footer from "./components/Footer"
 import { firebase } from '@firebase/app'
 import "firebase/auth"
 export default {
   components: {
-    Header
+    Header,
+    Footer
   },
   mounted() {
     firebase.auth().onAuthStateChanged(function (user) {
