@@ -11,7 +11,6 @@
         </div>
         <button type="submit">Register</button>
     </form>
-    <div class="error" v-if="error">{{error.message}}</div>
 
     <span>Don't Have an Account? Click here to </span>
     <router-link to="/register">Register</router-link>
@@ -35,8 +34,8 @@ export default {
         const val = await firebase.auth().signInWithEmailAndPassword(this.email, this.password);
         console.log(val)
         this.$router.push("/")
-      } catch (error) {
-        console.log(error)
+      } catch (err) {
+        console.log(err)
       }
     }
   }

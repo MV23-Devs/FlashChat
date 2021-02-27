@@ -42,8 +42,8 @@ export default {
         const data = await firebase.auth().signOut();
         console.log(data);
         this.$router.push("/login");
-      } catch (error) {
-        console.log(error);
+      } catch (err) {
+        console.log(err);
       }
     },
   },
