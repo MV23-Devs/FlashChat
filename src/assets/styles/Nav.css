@@ -19,8 +19,10 @@ body {
 }
 
 #nav a {
+    
+    border: 0px solid #000;
     font-weight: bold;
-    color: #444444;
+    color: #fff;
     text-decoration: none;
 
 }
@@ -33,14 +35,20 @@ body {
     display: inline-block;
 }
 
-.NavBtns { 
-    margin: 0px;
-    padding: 15px;
-    border-right: 1px solid #fff;
+.NavButtons {
+    background-color: #00000000;
+    transition: background-color 1s;
+    padding: 13px;
+    display: inline-block;
+    border-right: 1px solid white;
 
 }
 
-.NavBtns:hover {
-    background-color: #00000044;
+.NavButtons:hover {
+    background-color: #00000088;
+    transition: background-color 1s;
+    padding: 13px;
+    display: inline-block;
+    border-right: 1px solid white;
 
 }
