@@ -1,7 +1,7 @@
 <template>
   <div class="login">
     <h1>Login</h1>
-    <hr>
+    <!-- <hr> -->
     <form @submit.prevent="pressed">
       <div class="email">
         <input id="email" class="inputField" type="email" v-model="email" placeholder="Email">
