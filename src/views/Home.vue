@@ -1,26 +1,26 @@
 <template>
   <div id="app">
-    <DisplayCard :clue="DisplayClue" :answer="DisplayAnswer"/>
-    <VideoChat msg="Flash Study"/>
+    <!-- <DisplayCard :clue="DisplayClue" :answer="DisplayAnswer"/> -->
+    <VideoChat msg="Flash Call"/>
   </div>
 </template>
 
 <script>
 
-import DisplayCard from '../components/DisplayCard.vue'
+// import DisplayCard from '../components/DisplayCard.vue'
 import VideoChat from '../components/VideoChat.vue'
 
 export default {
   name: 'App',
   components: {
-    DisplayCard,
+    // DisplayCard,
     VideoChat
   },
   data() {
     return {
-      messages: ["lol", "yeeyee", "haw", "shamone"],
-      DisplayClue: 'yeet',
-      DisplayAnswer: 'yeet2',
+      // messages: ["lol", "yeeyee", "haw", "shamone"],
+      // DisplayClue: 'yeet',
+      // DisplayAnswer: 'yeet2',
     }
   }
 }

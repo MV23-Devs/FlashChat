@@ -12,6 +12,9 @@
         <button type="submit">Register</button>
     </form>
     <div class="error" v-if="error">{{error.message}}</div>
+
+    <span>Don't Have an Account? Click here to </span>
+    <router-link to="/register">Register</router-link>
   </div>
 </template>
 

@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <div class="agora-title-box">
-      <div class="agora-title">FLASH STUDY</div>
+      <div class="agora-title">FLASH Call</div>
     </div>
     <div class="agora-box">
       <div class="agora-input">
