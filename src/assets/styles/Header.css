@@ -8,7 +8,7 @@
     color: white;
 }
 
-.logged > button {
+button {
     margin: 5px;
     position: relative;
     border-radius: 20px;
@@ -20,7 +20,7 @@
 }
 
 
-.logged > button:hover {
+button:hover {
     animation-fill-mode: forwards;
     padding-left: 70px;
     padding-right: 70px;
