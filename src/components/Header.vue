@@ -1,8 +1,8 @@
 <template>
   <div>
     <div class="logged">
-      Logged in
-      <span v-if="loggedIn">yes.</span>
+      
+      <span v-if="loggedIn">Logged in as {{this.user.email}}</span>
       <span v-else
         >no
 
@@ -22,7 +22,8 @@ export default {
   },
   data() {
     return {
-      loggedIn: false
+      loggedIn: false,
+      user: null
     };
   },
   methods: {
@@ -32,9 +33,11 @@ export default {
           // User is signed in.
           console.log("signed in");
           this.loggedIn = true;
+          this.user = user;
         } else {
           // No user is signed in.
           this.loggedIn = false;
+          this.user = null;
           console.log("signed out", this.loggedIn);
         }
       });
