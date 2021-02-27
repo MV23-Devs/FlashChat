@@ -1,30 +1,12 @@
 <template>
   <div id="app">
-    <DisplayCard :clue="DisplayClue" :answer="DisplayAnswer"/>
-    <VideoChat msg="Flash Study"/>
+    <div id="nav">
+      <router-link to="/">Home</router-link> |
+      <router-link to="/login">Login</router-link>
+    </div>
+    <router-view/>
   </div>
 </template>
-
-<script>
-
-import DisplayCard from './components/DisplayCard.vue'
-import VideoChat from './components/VideoChat.vue'
-
-export default {
-  name: 'App',
-  components: {
-    DisplayCard,
-    VideoChat
-  },
-  data() {
-    return {
-      messages: ["lol", "yeeyee", "haw", "shamone"],
-      DisplayClue: 'yeet',
-      DisplayAnswer: 'yeet2',
-    }
-  }
-}
-</script>
 
 <style>
 #app {
@@ -33,6 +15,18 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+
+#nav {
+  padding: 30px;
+}
+
+#nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+#nav a.router-link-exact-active {
+  color: #42b983;
 }
 </style>
