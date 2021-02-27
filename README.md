@@ -1,1 +1,2 @@
-# Heads Up
+# StudyChat
+
