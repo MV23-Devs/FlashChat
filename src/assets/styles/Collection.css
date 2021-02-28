@@ -1,0 +1,4 @@
+select {
+    -moz-appearance: button !important;
+    -webkit-appearance: button !important;
+}

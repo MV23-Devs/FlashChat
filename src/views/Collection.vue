@@ -12,12 +12,41 @@
     <hr />
     <h3>View Collection</h3>
     <select v-model="current" @change.prevent="opened">
-      <option v-for="item in collections" :key="item.name">
-        {{ item.name }}
-      </option>
+      <option v-for="item in collections" :key="item.name">{{item.name}}</option>
     </select>
+    <br />
     <ul>
-      <li v-for="card in cards" :key="card.name">{{ card.key }}</li>
+      <li v-for="card in cards" :key="card.name">
+        <v-app id="inspire">
+          <v-card class="mx-auto" max-width="344">
+            <v-card-text>
+              <div>{{ card.key }}</div>
+            </v-card-text>
+            <v-card-actions>
+              <v-btn text color="teal accent-4" @click="reveal = true">
+                Learn More
+              </v-btn>
+            </v-card-actions>
+
+            <v-expand-transition>
+              <v-card
+                v-if="reveal"
+                class="transition-fast-in-fast-out v-card--reveal"
+                style="height: 100%"
+              >
+                <v-card-text class="pb-0">
+                  <p class="display-1 text--primary">{{ card.val }}</p>
+                </v-card-text>
+                <v-card-actions class="pt-0">
+                  <v-btn text color="teal accent-4" @click="reveal = false">
+                    Close
+                  </v-btn>
+                </v-card-actions>
+              </v-card>
+            </v-expand-transition>
+          </v-card>
+        </v-app>
+      </li>
     </ul>
     <hr />
     <h3>Add Cards</h3>
@@ -72,7 +101,7 @@ export default {
             ref.docChanges().forEach((change) => {
               const { newIndex, oldIndex, doc, type } = change;
               if (type === "added") {
-                this.cards.push(doc.data());
+                this.cards.push(doc.data().name);
               } else if (type === "modified") {
                 this.cards.splice(oldIndex, 1);
                 this.cards.splice(newIndex, 0, doc.data());
@@ -146,3 +175,5 @@ export default {
   font-size: 20px;
 }
 </style>
+
+<style src="../assets/styles/Collection.css"></style>
