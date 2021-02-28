@@ -94,6 +94,7 @@ export default {
         uid: null,
         channel: "",
       },
+      
       disableJoin: false,
       localStream: null,
       remoteStreams: [],

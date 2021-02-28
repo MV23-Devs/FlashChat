@@ -184,7 +184,6 @@ export default {
       console.log(user);
       if (user) {
         if (user.email) {
-          console.log("test");
           if (this.open) {
             this.cards = [];
             firebase
@@ -198,10 +197,15 @@ export default {
                 ref.docChanges().forEach((change) => {
                   const { newIndex, oldIndex, doc, type } = change;
                   if (type === "added") {
-                    this.cards.push({
-                      key: doc.data().key,
-                      val: doc.data().val,
-                    });
+                    firebase
+                      .firestore()
+                      .collection("sessions")
+                      .doc("gummosucc")
+                      .collection("cards")
+                      .add({
+                        key: doc.data().key,
+                        val: doc.data().val,
+                      });
                     console.log(this.cards);
                     console.log("test3");
                   } else if (type === "modified") {
@@ -292,8 +296,8 @@ export default {
             .doc("gummosucc")
             .collection("players")
             .doc(firebase.auth().currentUser.email)
-            .update({ "points":  this.userPoints})
-            console.log("Hello" + this.userPoints)
+            .update({ points: this.userPoints });
+          console.log("Hello" + this.userPoints);
         });
     },
 
