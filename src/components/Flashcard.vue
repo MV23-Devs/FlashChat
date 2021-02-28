@@ -4,7 +4,8 @@
     max-width="344"
   >
     <v-card-text>
-      <div>Card:</div>
+      <h2 v-if="cardHidden">Term</h2>
+      <h2 v-else>Answer</h2>
       <p v-if="cardHidden" class="display-1 text--primary">{{this.cardname}}</p>
       <p v-else class="display-1 text--primary">{{ this.answer }}</p>
     </v-card-text>
