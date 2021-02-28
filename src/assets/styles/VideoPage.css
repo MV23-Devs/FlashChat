@@ -19,6 +19,7 @@
 }
 
 #notVideo {
+    margin-left: 20px;
     margin-top: 40px;
     display: none;
     position: relative;
