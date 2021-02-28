@@ -19,7 +19,7 @@ body {
 }
 
 #nav a {
-    
+    font-size: 20px;
     border: 0px solid #000;
     font-weight: bold;
     color: #fff;
@@ -36,19 +36,18 @@ body {
 }
 
 .NavButtons {
-    background-color: #00000000;
-    transition: background-color 1s;
-    padding: 13px;
+    padding: 10px;
     display: inline-block;
-    border-right: 1px solid white;
+    border: 0px solid white;
+
+    transition: border-bottom 0.25s;
+    border-bottom: 10px solid transparent;
 
 }
 
 .NavButtons:hover {
-    background-color: #00000088;
-    transition: background-color 1s;
-    padding: 13px;
+    transition: border-bottom 0.25s;
+    border-bottom: 10px solid white;
     display: inline-block;
-    border-right: 1px solid white;
 
 }
