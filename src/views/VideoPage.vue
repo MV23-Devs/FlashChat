@@ -4,8 +4,13 @@
     <VideoChat id="vidChat" msg="Flash Study" />
     
     <div id="notVideo">
-      <v-btn id = "muteButton" v-if = "micOn" v-on:click="mute"><img src = "../assets/microphone.png" width = "24" height = "24"/></v-btn>
-      <v-btn id = "muteButton" v-else v-on:click="mute"><img src = "../assets/microphone-off.png" width = "24" height = "24"/></v-btn>
+      <!-- mute -->
+      <v-btn id = "muteButton" class="iconButtons" v-if = "micOn" v-on:click="mute"><img src = "../assets/microphone.png" width = "24" height = "24"/></v-btn>
+      <v-btn id = "muteButton" class="iconButtons" v-else v-on:click="mute"><img src = "../assets/microphone-off.png" width = "24" height = "24"/></v-btn>
+      <!-- video  -->
+      <v-btn id = "cameraButton" class="iconButtons" v-if = "camOn" v-on:click="cameraFlip"><img src = "../assets/camera.png" width = "24" height = "24"/></v-btn>
+      <v-btn id = "cameraButton" class="iconButtons" v-else v-on:click="cameraFlip"><img src = "../assets/camera-off.png" width = "24" height = "24"/></v-btn>
+
       <Flashcard class="stackedElement" />
       <Chat class="stackedElement" id="chat" />
 
@@ -63,6 +68,7 @@ export default {
       current: "",
       open: false,
       micOn: true,
+      camOn: true,
     };
   },
   methods: {
@@ -74,6 +80,10 @@ export default {
       //   localStreams.camera.stream.unmuteAudio();
       // }
       this.micOn = !this.micOn;
+    },
+    cameraFlip() {
+      console.log("cameraFlip was called");
+      this.camOn = !this.camOn;
     },
     showNotVideo() {
       document.getElementById("notVideo").style.display = "inline-block";
