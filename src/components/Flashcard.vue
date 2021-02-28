@@ -5,20 +5,11 @@
   >
     <v-card-text>
       <div>Card:</div>
-      <p class="display-1 text--primary">
-        {{this.cardname}}
-      </p>
-      <div class="text--primary">
-        <p>{{ this.answer }}</p>
-      </div>
+      <p v-if="cardHidden" class="display-1 text--primary">{{this.cardname}}</p>
+      <p v-else class="display-1 text--primary">{{ this.answer }}</p>
     </v-card-text>
     <v-card-actions>
-      <v-btn
-        text
-        color="deep-purple accent-4"
-      >
-        Learn More
-      </v-btn>
+      <v-btn v-on:click="flipCard" text color="deep-purple accent-4">Flip</v-btn>
     </v-card-actions>
   </v-card>
 </template>
@@ -32,7 +23,8 @@
         data() {
           return {
             cardname: "",
-            answer: ""
+            answer: "",
+            cardHidden: true,
           }
         },
         mounted() {
@@ -56,9 +48,9 @@
         methods: {
           nextCard() {
 
-
-
-
+          },
+          flipCard() {
+            this.cardHidden = !this.cardHidden;
           }
 
           
