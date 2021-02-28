@@ -7,12 +7,16 @@
     background-color: #ddd;
 }
 
+
 #notVideo {
+    margin-top: 40px;
     display: none;
+    position: relative;
 }
 
 #vidChat {
-    width: 100%;
+    display: inline-block;
+    max-width: 70%;
 }
 
 .stackedElement {
@@ -20,6 +24,10 @@
     width: 20%;
     min-width: 400px;
     margin-bottom: 30px;
+}
+
+#VideoPage {
+    display: inline-flex;
 }
 
 #VideoPageCustomArea {
