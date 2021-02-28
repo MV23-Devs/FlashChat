@@ -282,15 +282,20 @@ export default {
 }
 
 .agora-view {
-  margin: auto;
+  margin-left: 20px;
   margin-top: 20px;
-  display: flex;
+  padding: none;
+  /* max-width: 70%; */
+  display: flexbox;
   flex-wrap: wrap;
+  width: 100%;
 }
+
 .agora-video {
+  display: inline-block;
   width: 640px;
   height: 480px;
-  margin: 0px;
+  margin: 20px;
 }
 .agora-video > div {
   width: 640px;
