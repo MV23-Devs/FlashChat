@@ -1,7 +1,7 @@
 <template>
     <div>
         <h2>Guesses:</h2>
-        <ul v-for="item in userInputs" :key="userInputs.indexOf(item)"> 
+        <ul v-for="item in userInputs" :key="userInputs.indexOf(item)" style="list-style-type:none;"> 
             <li>{{ item }}</li>
         </ul>    
         <form @submit.prevent = "checkAnswer" id = 'answerForm'>
