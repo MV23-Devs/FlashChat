@@ -69,12 +69,12 @@
         </thead>
         <tbody>
           <tr>
-            <td>100025319@mvla.net</td>
+            <td>Jason</td>
             <td>{{ this.userPoints }}</td>
           </tr>
           <tr>
-            <td>saarang.bondalapati@gmail.com</td>
-            <td>500</td>
+            <td>Saarang</td>
+            <td>{{opponentPoints}}</td>
           </tr>
         </tbody>
       </table>
@@ -140,6 +140,7 @@ export default {
       user: "",
       userInput: "",
       userPoints: 0,
+      opponentPoints: 0,
       micOn: true,
       camOn: true,
     };
@@ -174,6 +175,30 @@ export default {
       this.load();
     },
     async load() {
+      firebase
+      .firestore()
+      .collection("sessions")
+      .doc("gummosucc")
+      .collection("players")
+      .doc("popovich@gmail.com")
+      .onQuerySnapshot((ref) => {
+          console.log(ref);
+          ref.docChanges().forEach((change) => {
+            const { type } = change;
+            if (type === "added") {
+              console.log("added");
+            } else if (type === "modified") {
+              console.log("modified");
+              this.opponentPoints = this.opponentPoints + 500;
+              // updateTable();
+            } else if (type === "removed") {
+              console.log("removed");
+            }
+          });
+        })
+      .catch(err => {
+        console.log(err)
+      })
       const user = await firebase.auth().currentUser;
       console.log(user);
       if (user) {
@@ -282,6 +307,7 @@ export default {
       firebase
         .firestore()
         .collection("sessions")
+        .doc("gummosucc")
         .doc(firebase.auth().currentUser.email)
         .get()
         .then((doc) => {
