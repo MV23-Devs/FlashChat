@@ -96,3 +96,9 @@ select {
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
 }
+
+
+
+#term {
+    margin-left: 25px;
+}

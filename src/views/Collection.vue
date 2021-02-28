@@ -24,10 +24,12 @@
     <h3 id="addCards">Add Cards</h3>
     <form @submit.prevent="pressed">
       <div class="key">
-        <input type="text" v-model="key" placeholder="Key:" />
+        <label >Term:     </label>
+        <input id="term" type="text" class="inputField" v-model="key" placeholder="Term" />
       </div>
       <div class="val">
-        <input type="text" v-model="val" placeholder="Value:" />
+        <label>Answer:</label>
+        <input type="text" class="inputField" v-model="val" placeholder="Answer" />
       </div>
       <button class="submitBtn" type="submit">Add Cards</button>
     </form>
