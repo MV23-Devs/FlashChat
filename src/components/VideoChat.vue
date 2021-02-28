@@ -11,14 +11,6 @@
           placeholder="Appid"
           clearable
         ></el-input>
-      </div>
-      <div class="agora-input">
-        <div class="agora-text">Token</div>
-        <el-input
-          v-model="option.token"
-          placeholder="Token"
-          clearable
-        ></el-input>
       </div> -->
       <div class="agora-input">
         <div class="agora-text">* Channel Name</div>
@@ -28,6 +20,7 @@
           clearable
         ></el-input>
       </div>
+
       <div class="agora-button">
         <el-button
           type="primary"
