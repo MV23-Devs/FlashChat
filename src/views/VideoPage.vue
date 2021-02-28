@@ -4,7 +4,6 @@
     <VideoChat id="vidChat" msg="Flash Study" />
     <Flashcard />
     <Chat id="chat" />
-    <PointTable/>
     
 
     <h3>View Collection</h3>
@@ -29,7 +28,6 @@
 import VideoChat from "../components/VideoChat.vue";
 import Flashcard from "../components/Flashcard.vue";
 import Chat from "../components/Chat.vue";
-import PointTable from "../components/PointTable.vue";
 
 import { firebase } from "@firebase/app";
 import "firebase/auth";
@@ -40,7 +38,6 @@ export default {
     VideoChat,
     Flashcard,
     Chat,
-    PointTable
   },
 
   mounted() {

@@ -11,22 +11,22 @@
             <button id="submitBtn">Check Answer!</button>
         </form>
         <table>
-        <thead>
-            <tr>
-                <th>Player name</th>
-                <th>Player points</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>{{this.user}}</td>
-                <td>{{this.userPoints}}</td>
-            </tr>
-            <tr>
-                <td>saarang.bondalapati@gmail.com</td>
-                <td>500</td>
-            </tr>
-        </tbody>
+            <thead>
+                <tr>
+                    <th>Player name</th>
+                    <th>Player points</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{this.user}}</td>
+                    <td>{{this.userPoints}}</td>
+                </tr>
+                <tr>
+                    <td>saarang.bondalapati@gmail.com</td>
+                    <td>500</td>
+                </tr>
+            </tbody>
 
     </table>   
     </div>
