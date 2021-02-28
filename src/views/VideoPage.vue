@@ -2,6 +2,7 @@
 <template>
   <div id="VideoPage">
     <VideoChat id="vidChat" msg="Flash Study" />
+    <v-btn id = "muteButton" v-on:click = "mute"><img src = "../assets/microphone.png" width = "24" height = "24"/></v-btn>
     <div id="notVideo">
       <Flashcard class="stackedElement" />
       <Chat class="stackedElement" id="chat" />
@@ -35,7 +36,7 @@
 import VideoChat from "../components/VideoChat.vue";
 import Flashcard from "../components/Flashcard.vue";
 import Chat from "../components/Chat.vue";
-
+// import { mdiMicrophone } from '@mdi/js';
 import { firebase } from "@firebase/app";
 import "firebase/auth";
 
@@ -43,6 +44,7 @@ export default {
   name: "App",
   components: {
     VideoChat,
+    // mdiMicrophone,
     Flashcard,
     Chat,
   },
@@ -63,6 +65,9 @@ export default {
     };
   },
   methods: {
+    mute() {
+      console.log("Mute was called");
+    },
     showNotVideo() {
       document.getElementById("notVideo").style.display = "inline-block";
     },
