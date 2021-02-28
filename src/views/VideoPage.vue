@@ -74,6 +74,11 @@ export default {
   methods: {
     mute() {
       console.log("Mute was called");
+      // if (micOn) {
+      //   localStreams.camera.stream.muteAudio();
+      // } else {
+      //   localStreams.camera.stream.unmuteAudio();
+      // }
       this.micOn = !this.micOn;
     },
     cameraFlip() {
