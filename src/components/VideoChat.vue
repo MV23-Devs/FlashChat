@@ -80,6 +80,8 @@
 import RTCClient from "../agora-rtc-client";
 import StreamPlayer from "./stream-player";
 import { log } from "../utils/utils";
+import { firebase } from "@firebase/app";
+import "firebase/auth";
 export default {
   components: {
     StreamPlayer,
@@ -125,6 +127,9 @@ export default {
             message: "Join Success",
             type: "success",
           });
+          firebase.firestore().collection("sessions").doc(this.option.channel).collection("players").doc(firebase.auth().currentUser.email).set({
+            points: 0,
+          })
           this.rtc
             .publishStream()
             .then((stream) => {
@@ -157,6 +162,7 @@ export default {
             message: "Leave Success",
             type: "success",
           });
+          firebase.firestore().collection("sessions").doc(this.option.channel).collection("players").doc(firebase.auth().currentUser.email).delete();
         })
         .catch((err) => {
           this.$message.error("Leave Failure");
