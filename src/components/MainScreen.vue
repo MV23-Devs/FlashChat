@@ -35,6 +35,7 @@ button {
     border-radius: 50px ;
     background-color: #efefef;
     box-shadow: none;
+    color: white;
 }
 
 button:hover {

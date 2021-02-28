@@ -1,18 +1,17 @@
 <template>
   <div class="login">
     <h1>Collection</h1>
-    <hr />
+    <div id="CollectionMain">
     <h3>Create a New Collection</h3>
     <form @submit.prevent="pressed2">
       <div class="name">
-        <input type="text" v-model="name" placeholder="Collection Name:" />
+        <input class="inputField" type="text" v-model="name" placeholder="Collection Name:" />
       </div>
-      <button type="submit">Submit</button>
+      <button class="submitBtn" type="submit">Submit</button>
     </form>
-    <hr />
     <h3>View Collection</h3>
-    <select v-model="current" @change.prevent="opened">
-      <option v-for="item in collections" :key="item.name">
+    <select id="DropdownMenu" v-model="current" @change.prevent="opened">
+      <option id="DropdownOptions" v-for="item in collections" :key="item.name">
         {{ item.name }}
       </option>
     </select>
@@ -22,8 +21,7 @@
           {{card.key}}  |  {{card.val}}
       </li>
     </ul>
-    <hr />
-    <h3>Add Cards</h3>
+    <h3 id="addCards">Add Cards</h3>
     <form @submit.prevent="pressed">
       <div class="key">
         <input type="text" v-model="key" placeholder="Key:" />
@@ -31,8 +29,9 @@
       <div class="val">
         <input type="text" v-model="val" placeholder="Value:" />
       </div>
-      <button type="submit">Submit</button>
+      <button class="submitBtn" type="submit">Add Cards</button>
     </form>
+    </div>
   </div>
 </template>
 

@@ -260,6 +260,7 @@ export default {
   position: relative;
   border-radius: 20px;
   border: 0px solid #000;
+  color: #fff;
   padding: 10px;
   padding-left: 30px;
   padding-right: 30px;
