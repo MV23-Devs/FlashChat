@@ -35,21 +35,23 @@ export default {
     };
   },
   mounted() {
-    firebase
-      .firestore()
-      .collection("accounts")
-      .doc(firebase.auth().currentUser.email)
-      .collection("collections")
-      .doc("Test")
-      .collection("cards")
-      .doc("test2")
-      .get()
-      .then((doc) => {
-        console.log(doc.data());
-        this.cardname = doc.data().key;
-        this.answer = doc.data().val;
-        console.log(this.cardname, this.answer);
-      });
+    if (firebase.auth().currentUser) {
+      firebase
+        .firestore()
+        .collection("accounts")
+        .doc(firebase.auth().currentUser.email)
+        .collection("collections")
+        .doc("Test")
+        .collection("cards")
+        .doc("test2")
+        .get()
+        .then((doc) => {
+          console.log(doc.data());
+          this.cardname = doc.data().key;
+          this.answer = doc.data().val;
+          console.log(this.cardname, this.answer);
+        });
+    }
   },
 
   methods: {
