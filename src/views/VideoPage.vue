@@ -4,6 +4,7 @@
     <VideoChat id="vidChat" msg="Flash Study" />
     <Flashcard />
     <Chat id="chat" />
+    <PointTable/>
     
   </div>
 </template>
@@ -13,6 +14,7 @@
 import VideoChat from "../components/VideoChat.vue";
 import Flashcard from "../components/Flashcard.vue";
 import Chat from "../components/Chat.vue";
+import PointTable from "../components/PointTable.vue";
 
 export default {
   name: "App",
@@ -20,6 +22,7 @@ export default {
     VideoChat,
     Flashcard,
     Chat,
+    PointTable
   },
 };
 </script>
