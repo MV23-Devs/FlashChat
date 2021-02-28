@@ -7,6 +7,14 @@
     background-color: #ddd;
 }
 
+#muteButton {
+    height: 60px !important;
+    width: 60px !important;
+    background-color: deepskyblue;
+    border-radius: 50%;
+    box-shadow: none;
+
+}
 
 #notVideo {
     margin-top: 40px;
