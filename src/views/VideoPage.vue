@@ -195,7 +195,7 @@ export default {
       .doc("gummosucc")
       .collection("players")
       .doc("popovich@gmail.com")
-      .onQuerySnapshot((ref) => {
+      .onSnapshot((ref) => {
           console.log(ref);
           ref.docChanges().forEach((change) => {
             const { type } = change;
@@ -323,10 +323,7 @@ export default {
         .firestore()
         .collection("sessions")
         .doc("gummosucc")
-<<<<<<< HEAD
         .collection("players")
-=======
->>>>>>> cd8377d35c44a1bf21539fcc32b41237b862e2e1
         .doc(firebase.auth().currentUser.email)
         .get()
         .then((doc) => {
