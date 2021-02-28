@@ -3,6 +3,13 @@
   <div id="VideoPage">
     <VideoChat id="vidChat" msg="Flash Study" />
 
+    <h3>Choose Collection to Submit</h3>
+    <select id="DropdownMenu" v-model="current" @change.prevent="opened">
+      <option id="DropdownOptions" v-for="item in collections" :key="item.name">
+        {{ item.name }}
+      </option>
+    </select>
+
     <div id="notVideo">
       <!-- mute -->
       <v-btn id="muteButton" class="iconButtons" v-if="micOn" v-on:click="mute"
