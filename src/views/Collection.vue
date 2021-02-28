@@ -21,7 +21,7 @@
           {{card.key}}  |  {{card.val}}
       </li>
     </ul>
-    <h3>Add Cards</h3>
+    <h3 id="addCards">Add Cards</h3>
     <form @submit.prevent="pressed">
       <div class="key">
         <input type="text" v-model="key" placeholder="Key:" />
