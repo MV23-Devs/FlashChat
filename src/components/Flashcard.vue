@@ -4,9 +4,9 @@
       <h2 v-if="cardHidden">Term</h2>
       <h2 v-else>Answer</h2>
       <p v-if="cardHidden" class="display-1 text--primary">
-        {{ this.cardname }}
+        {{ this.cards }}
       </p>
-      <p v-else class="display-1 text--primary">{{ this.answer }}</p>
+      <p v-else class="display-1 text--primary">{{ this.cards }}</p>
     </v-card-text>
     <v-card-actions>
       <v-btn v-on:click="flipCard" text color="deep-purple accent-4"
@@ -29,35 +29,43 @@ export default {
   name: "Flashcard",
   data() {
     return {
-      cardname: "",
-      answer: "",
+      cards: new Map(),
       cardHidden: true,
     };
   },
   mounted() {
-    if (firebase.auth().currentUser) {
-      firebase
-        .firestore()
-        .collection("accounts")
-        .doc(firebase.auth().currentUser.email)
-        .collection("collections")
-        .doc("Test")
-        .collection("cards")
-        .doc("test2")
-        .get()
-        .then((doc) => {
-          console.log(doc.data());
-          this.cardname = doc.data().key;
-          this.answer = doc.data().val;
-          console.log(this.cardname, this.answer);
-        });
-    }
+    this.pullCards();8
   },
-
   methods: {
+    async pullCards() {
+      const user = await firebase.auth().currentUser;
+      if (user) {
+        firebase
+          .firestore()
+          .collection("accounts")
+          .doc(user.email)
+          .collection("collections")
+          .doc("Test")
+          .collection("cards")
+          .onSnapshot((ref) => {
+            ref.docChanges().forEach((change) => {
+              const {doc, type } = change;
+              if (type === "added") {
+                this.cards[doc.data().key] = doc.data().val;
+              } else if (type === "modified") {
+                console.log("modified");
+              } else if (type === "removed") {
+                console.log("removed");
+              }
+            });
+            console.log("CARDS: ", this.cards)
+          })
+      }
+    },
+
     nextCard() {},
     flipCard() {
-      document.getElementById("card").addClass("addedclass");
+      //document.getElementById("card").addClass("addedclass");
       this.cardHidden = !this.cardHidden;
     },
   },
