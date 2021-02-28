@@ -69,12 +69,12 @@
         </thead>
         <tbody>
           <tr>
-            <td>100025319@mvla.net</td>
+            <td>Jason</td>
             <td>{{ this.userPoints }}</td>
           </tr>
           <tr>
-            <td>saarang.bondalapati@gmail.com</td>
-            <td>500</td>
+            <td>Saarang</td>
+            <td>{{opponentPoints}}</td>
           </tr>
         </tbody>
       </table>
@@ -140,8 +140,23 @@ export default {
       user: "",
       userInput: "",
       userPoints: 0,
+      opponentPoints: 0,
       micOn: true,
       camOn: true,
+      players: [
+          {
+              email: "test@gmail.com",
+              points: 0,
+          },
+          {
+              email: "jzscuba@gmail.com",
+              points: 300,
+          },
+          {
+              email: "100025319@gmail.com",
+              points: -100,
+          },
+      ]
     };
   },
   methods: {
@@ -174,6 +189,30 @@ export default {
       this.load();
     },
     async load() {
+      firebase
+      .firestore()
+      .collection("sessions")
+      .doc("gummosucc")
+      .collection("players")
+      .doc("popovich@gmail.com")
+      .onQuerySnapshot((ref) => {
+          console.log(ref);
+          ref.docChanges().forEach((change) => {
+            const { type } = change;
+            if (type === "added") {
+              console.log("added");
+            } else if (type === "modified") {
+              console.log("modified");
+              this.opponentPoints = this.opponentPoints + 500;
+              // updateTable();
+            } else if (type === "removed") {
+              console.log("removed");
+            }
+          });
+        })
+      .catch(err => {
+        console.log(err)
+      })
       const user = await firebase.auth().currentUser;
       console.log(user);
       if (user) {
@@ -284,7 +323,10 @@ export default {
         .firestore()
         .collection("sessions")
         .doc("gummosucc")
+<<<<<<< HEAD
         .collection("players")
+=======
+>>>>>>> cd8377d35c44a1bf21539fcc32b41237b862e2e1
         .doc(firebase.auth().currentUser.email)
         .get()
         .then((doc) => {
