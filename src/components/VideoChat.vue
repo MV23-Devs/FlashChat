@@ -58,6 +58,9 @@
       id="LeaveBtn"
       >Leave
     </el-button>
+    <div id="meetingControls">
+      <button @click="disableVideo">Disable Video</button>
+    </div>
     <div class="agora-view">
       <div class="agora-video">
         <StreamPlayer
@@ -106,6 +109,9 @@ export default {
   },
 
   methods: {
+    disableVideo() {
+      
+    },
     joinEvent() {
       document.getElementById("MainBox").style.display = "none";
       this.$parent.showNotVideo()
