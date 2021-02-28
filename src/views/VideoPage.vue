@@ -56,7 +56,7 @@
         </thead>
         <tbody>
           <tr>
-            <td>{{ this.user }}</td>
+            <td>100025319@mvla.net</td>
             <td>{{ this.userPoints }}</td>
           </tr>
           <tr>
@@ -257,45 +257,47 @@ export default {
           this.inputRecords(this.userInput);
           if (this.userInput === answer) {
             this.inputRecords("YOU GOT THE ANSWER!");
-            this.addPoints(500);
+            this.addPoints();
             console.log("That was correct!");
           }
         });
     },
     //remember to reset points if router path goes back to root
-    addPoints(pointsWon) {
-      let points = pointsWon;
-      this.userPoints += pointsWon;
+    addPoints() {
+      // let points = pointsWon;
+      // this.userPoints += pointsWon;
       firebase
         .firestore()
-        .collection("accounts")
+        .collection("sessions")
+        .doc("gummosucc")
+        .collection("players")
         .doc(firebase.auth().currentUser.email)
         .get()
         .then((doc) => {
           console.log("LITERALLY WIN POINTS LMAO");
           console.log(doc.data());
-          points = points + doc.data().points;
+          this.userPoints = doc.data().points + 500;
+          // points = points + doc.data().points;
           console.log(doc.data().points);
-        });
-      firebase
-        .firestore()
-        .collection("accounts")
-        .doc(firebase.auth().currentUser.email)
-        .update({ points: points })
-        .then(() => {
-          console.log("Firebase Points Updated Successfully: ");
+          firebase
+            .firestore()
+            .collection("sessions")
+            .doc("gummosucc")
+            .collection("players")
+            .doc(firebase.auth().currentUser.email)
+            .update({ "points":  this.userPoints})
+            console.log("Hello" + this.userPoints)
         });
     },
 
     updateTable() {
       firebase
         .firestore()
-        .collection("accounts")
+        .collection("sessions")
         .doc(firebase.auth().currentUser.email)
         .get()
         .then((doc) => {
           this.userPoints = doc.data().points;
-          this.user = doc.data().email;
         });
     },
   },
