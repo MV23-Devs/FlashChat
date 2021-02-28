@@ -31,6 +31,7 @@ export default {
         firebase.firestore().collection("accounts").doc(this.email).set({
           email: this.email,
           password: this.password,
+          points: 0
         });
         this.$router.push("/");
       } catch (err) {
