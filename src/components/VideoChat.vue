@@ -4,7 +4,7 @@
       <div class="agora-title">FLASH Chat</div>
     </div>
     <div class="agora-box" id="MainBox">
-      <div class="agora-input">
+      <!-- <div class="agora-input">
         <div class="agora-text">* Appid</div>
         <el-input
           v-model="option.appid"
@@ -19,7 +19,7 @@
           placeholder="Token"
           clearable
         ></el-input>
-      </div>
+      </div> -->
       <div class="agora-input">
         <div class="agora-text">* Channel Name</div>
         <el-input
@@ -94,8 +94,8 @@ export default {
   data() {
     return {
       option: {
-        appid: "",
-        token: "",
+        appid: "1e7239def2b44918b997b976d7279519",
+        token: "0061e7239def2b44918b997b976d7279519IADJuEL0a2/H3OfG5GHi7XBVGxn5dbgDob//Svd3sWEErkUbCc4AAAAAEAAdwi3RiX08YAEAAQCJfTxg",
         uid: null,
         channel: "",
       },
@@ -208,7 +208,7 @@ export default {
       this.$message(`Peer ${evt.uid} is online`);
     });
     rtc.on("peer-leave", (evt) => {
-      this.$message(`Peer ${evt.uid} already leave`);
+      this.$message(`Peer ${evt.uid} left`);
       this.remoteStreams = this.remoteStreams.filter(
         (it) => it.getId() !== evt.uid
       );
