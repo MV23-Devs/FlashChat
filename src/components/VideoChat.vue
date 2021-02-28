@@ -59,7 +59,7 @@
       >Leave
     </el-button>
     <div id="meetingControls">
-      <button @click="disableVideo">Disable Video</button>
+      <!-- <button @click="disableVideo">Disable Video</button> -->
     </div>
     <div class="agora-view">
       <div class="agora-video">

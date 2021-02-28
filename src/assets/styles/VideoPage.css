@@ -7,12 +7,14 @@
     background-color: #ddd;
 }
 
-#muteButton {
+.iconButtons {
     height: 60px !important;
     width: 60px !important;
-    background-color: deepskyblue;
+    background-color: deepskyblue !important;
     border-radius: 50%;
     box-shadow: none;
+    margin-right: 10px;
+    margin-bottom: 10px;
 
 }
 
