@@ -296,8 +296,9 @@ export default {
 }
 
 #LeaveBtn {
-  color: deepskyblue;
+  background-color: deepskyblue !important;
   display: block;
+  color: white !important;
   margin: auto;
 }
 </style>
