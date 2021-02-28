@@ -226,15 +226,16 @@ export default {
   flex-wrap: wrap;
 }
 .agora-video {
-  width: 320px;
-  height: 240px;
+  width: 640px;
+  height: 480px;
   margin: 0px;
 }
 .agora-video > div {
   width: 640px;
   height: 480px;
-  padding: 10px;
+  padding: 0px;
   margin: auto;
+  background-color: red;
   position: relative !important;
   overflow: visible;
 }
@@ -288,5 +289,8 @@ export default {
 <style>
 video {
   position: relative !important;
+  /* padding: 20px; */
+  /* margin: 100px; */
+  background-color: red;
 }
 </style>
