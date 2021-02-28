@@ -1,5 +1,5 @@
 <template>
-  <v-card class="mx-auto" max-width="344">
+  <v-card id="card" class="mx-auto" max-width="344">
     <v-card-text>
       <h2 v-if="cardHidden">Term</h2>
       <h2 v-else>Answer</h2>
