@@ -90,11 +90,12 @@ export default {
     return {
       option: {
         appid: "1e7239def2b44918b997b976d7279519",
-        token: "0061e7239def2b44918b997b976d7279519IADJuEL0a2/H3OfG5GHi7XBVGxn5dbgDob//Svd3sWEErkUbCc4AAAAAEAAdwi3RiX08YAEAAQCJfTxg",
+        token:
+          "0061e7239def2b44918b997b976d7279519IADJuEL0a2/H3OfG5GHi7XBVGxn5dbgDob//Svd3sWEErkUbCc4AAAAAEAAdwi3RiX08YAEAAQCJfTxg",
         uid: null,
         channel: "",
       },
-      
+
       disableJoin: false,
       localStream: null,
       remoteStreams: [],
@@ -105,12 +106,10 @@ export default {
   },
 
   methods: {
-    disableVideo() {
-      
-    },
+    disableVideo() {},
     joinEvent() {
       document.getElementById("MainBox").style.display = "none";
-      this.$parent.showNotVideo()
+      this.$parent.showNotVideo();
 
       if (!this.option.appid) {
         this.judge("Appid");
@@ -128,9 +127,15 @@ export default {
             message: "Join Success",
             type: "success",
           });
-          firebase.firestore().collection("sessions").doc(this.option.channel).collection("players").doc(firebase.auth().currentUser.email).set({
-            points: 0,
-          })
+          firebase
+            .firestore()
+            .collection("sessions")
+            .doc(this.option.channel)
+            .collection("players")
+            .doc(firebase.auth().currentUser.email)
+            .set({
+              points: 0,
+            });
           this.rtc
             .publishStream()
             .then((stream) => {
@@ -150,12 +155,12 @@ export default {
           log("join channel error", err);
         });
       this.disableJoin = true;
-      console.log("disableJoin = true")
+      console.log("disableJoin = true");
     },
     leaveEvent() {
       this.$router.push("/");
       this.disableJoin = false;
-      console.log("disableJoin = false")
+      console.log("disableJoin = false");
       this.rtc
         .leaveChannel()
         .then(() => {
@@ -163,7 +168,13 @@ export default {
             message: "Leave Success",
             type: "success",
           });
-          firebase.firestore().collection("sessions").doc(this.option.channel).collection("players").doc(firebase.auth().currentUser.email).delete();
+          firebase
+            .firestore()
+            .collection("sessions")
+            .doc(this.option.channel)
+            .collection("players")
+            .doc(firebase.auth().currentUser.email)
+            .delete();
         })
         .catch((err) => {
           this.$message.error("Leave Failure");
@@ -238,15 +249,20 @@ export default {
 }
 
 .agora-view {
-  margin: auto;
+  margin-left: 20px;
   margin-top: 20px;
-  display: flex;
+  padding: none;
+  /* max-width: 70%; */
+  display: flexbox;
   flex-wrap: wrap;
+  width: 100%;
 }
+
 .agora-video {
+  display: inline-block;
   width: 640px;
   height: 480px;
-  margin: 0px;
+  margin: 20px;
 }
 .agora-video > div {
   width: 640px;
