@@ -36,7 +36,7 @@
       </div>
       <h2>Current FlashCard</h2>
       <Flashcard class="stackedElement" />
-
+      <hr id="spacedHr">
       <h2>Guesses:</h2>
       <ul
         v-for="item in userInputs"
@@ -55,7 +55,7 @@
         <br />
         <button id="submitBtn">Check Answer!</button>
       </form>
-      <table>
+      <table id="scoreTable">
         <thead>
           <tr>
             <th>Player name</th>
