@@ -115,7 +115,8 @@ export default {
             .collection("collections")
             .doc(this.current)
             .collection("cards")
-            .add({
+            .doc(this.key)
+            .set({
               key: this.key,
               val: this.val,
             });

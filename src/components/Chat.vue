@@ -1,41 +1,6 @@
 <template>
   <div>
-    <h2>Guesses:</h2>
-    <ul
-      v-for="item in userInputs"
-      :key="(Math.random() + 1).toString() + userInput.indexOf(item)"
-      style="list-style-type: none"
-    >
-      <li>{{ item }}</li>
-    </ul>
-    <form @submit.prevent="checkAnswer" id="answerForm">
-      <label>Enter Answer Here:</label>
-      <input
-        type="text"
-        class="inputField"
-        v-on:input="userInput = $event.target.value"
-      />
-      <br />
-      <button id="submitBtn">Check Answer!</button>
-    </form>
-    <table>
-      <thead>
-        <tr>
-          <th>Player name</th>
-          <th>Player points</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>{{ this.user }}</td>
-          <td>{{ this.userPoints }}</td>
-        </tr>
-        <tr>
-          <td>saarang.bondalapati@gmail.com</td>
-          <td>500</td>
-        </tr>
-      </tbody>
-    </table>
+    
   </div>
 </template>
 
@@ -55,7 +20,13 @@ export default {
       user: "",
       userInput: "",
       userPoints: 0,
+      current: "",
+      open: false,
     };
+  },
+  props: {
+    collection: String,
+    card: String,
   },
   mounted() {
     if (firebase.auth().currentUser) {
@@ -82,6 +53,7 @@ export default {
       console.log(this.userInputs);
     },
     checkAnswer() {
+      console.log(this.$props.collection, this.$props.card);
       firebase
         .firestore()
         .collection("accounts")
@@ -92,12 +64,12 @@ export default {
         .doc("test2")
         .get()
         .then((doc) => {
-          console.log(doc.data());
+          console.log("Data: " + doc.data());
           this.answer = doc.data().val;
           console.log(this.answer);
         });
       console.log(this.userInput);
-      console.log(this.answer);
+      console.log("Answer: " + this.answer);
       this.inputRecords(this.userInput);
       if (this.userInput === this.answer) {
         this.inputRecords("YOU GOT THE ANSWER!");
