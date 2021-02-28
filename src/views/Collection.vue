@@ -12,40 +12,14 @@
     <hr />
     <h3>View Collection</h3>
     <select v-model="current" @change.prevent="opened">
-      <option v-for="item in collections" :key="item.name">{{item.name}}</option>
+      <option v-for="item in collections" :key="item.name">
+        {{ item.name }}
+      </option>
     </select>
     <br />
     <ul>
-      <li v-for="card in cards" :key="card.name">
-        <v-app id="inspire">
-          <v-card class="mx-auto" max-width="344">
-            <v-card-text>
-              <div>{{ card.key }}</div>
-            </v-card-text>
-            <v-card-actions>
-              <v-btn text color="teal accent-4" @click="reveal = true">
-                Learn More
-              </v-btn>
-            </v-card-actions>
-
-            <v-expand-transition>
-              <v-card
-                v-if="reveal"
-                class="transition-fast-in-fast-out v-card--reveal"
-                style="height: 100%"
-              >
-                <v-card-text class="pb-0">
-                  <p class="display-1 text--primary">{{ card.val }}</p>
-                </v-card-text>
-                <v-card-actions class="pt-0">
-                  <v-btn text color="teal accent-4" @click="reveal = false">
-                    Close
-                  </v-btn>
-                </v-card-actions>
-              </v-card>
-            </v-expand-transition>
-          </v-card>
-        </v-app>
+      <li v-for="card in cards" :key="card.key">
+          {{card.key}}  |  {{card.val}}
       </li>
     </ul>
     <hr />
@@ -87,7 +61,7 @@ export default {
       this.load();
     },
     async load() {
-      console.log(this.open);
+      console.log(firebase.auth().currentUser.email);
       if (this.open) {
         this.cards = [];
         firebase
@@ -101,7 +75,8 @@ export default {
             ref.docChanges().forEach((change) => {
               const { newIndex, oldIndex, doc, type } = change;
               if (type === "added") {
-                this.cards.push(doc.data().name);
+                this.cards.push({ key: doc.data().key, val: doc.data().val });
+                console.log(this.cards);
               } else if (type === "modified") {
                 this.cards.splice(oldIndex, 1);
                 this.cards.splice(newIndex, 0, doc.data());
