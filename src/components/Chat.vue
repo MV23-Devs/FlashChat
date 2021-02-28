@@ -85,14 +85,21 @@
                 .firestore()
                 .collection("accounts")
                 .doc(firebase.auth().currentUser.email)
-                .doc("points")
                 .get()
                 .then(doc => {
+                    console.log("LITERALLY WIN POINTS LMAO")
                     console.log(doc.data());
-                    doc.data().points += this.pointsWon;
+                    pointsWon = pointsWon + doc.data().points;
                     console.log(doc.data().points);
                 })
-
+                firebase
+                .firestore()
+                .collection("accounts")
+                .doc(firebase.auth().currentUser.email)
+                .update({ points: pointsWon })
+                .then(() => {
+                    console.log("Firebase Points Updated Successfully: ")
+                })
             }
 
             
