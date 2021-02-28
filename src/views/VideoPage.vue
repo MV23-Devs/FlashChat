@@ -79,50 +79,51 @@ export default {
       this.load();
     },
     async load() {
-      console.log(firebase.auth().currentUser.email);
-      if (this.open) {
-        this.cards = [];
+      if (firebase.auth().currentUser) {
+        if (this.open) {
+          this.cards = [];
+          firebase
+            .firestore()
+            .collection("accounts")
+            .doc(firebase.auth().currentUser.email)
+            .collection("collections")
+            .doc(this.current)
+            .collection("cards")
+            .onSnapshot((ref) => {
+              ref.docChanges().forEach((change) => {
+                const { newIndex, oldIndex, doc, type } = change;
+                if (type === "added") {
+                  this.cards.push({ key: doc.data().key, val: doc.data().val });
+                  console.log(this.cards);
+                } else if (type === "modified") {
+                  this.cards.splice(oldIndex, 1);
+                  this.cards.splice(newIndex, 0, doc.data());
+                } else if (type === "removed") {
+                  this.cards.splice(oldIndex, 1);
+                }
+              });
+            });
+        }
+        this.collections = [];
         firebase
           .firestore()
           .collection("accounts")
           .doc(firebase.auth().currentUser.email)
           .collection("collections")
-          .doc(this.current)
-          .collection("cards")
           .onSnapshot((ref) => {
             ref.docChanges().forEach((change) => {
               const { newIndex, oldIndex, doc, type } = change;
               if (type === "added") {
-                this.cards.push({ key: doc.data().key, val: doc.data().val });
-                console.log(this.cards);
+                this.collections.push(doc.data());
               } else if (type === "modified") {
-                this.cards.splice(oldIndex, 1);
-                this.cards.splice(newIndex, 0, doc.data());
+                this.collections.splice(oldIndex, 1);
+                this.collections.splice(newIndex, 0, doc.data());
               } else if (type === "removed") {
-                this.cards.splice(oldIndex, 1);
+                this.collections.splice(oldIndex, 1);
               }
             });
           });
       }
-      this.collections = [];
-      firebase
-        .firestore()
-        .collection("accounts")
-        .doc(firebase.auth().currentUser.email)
-        .collection("collections")
-        .onSnapshot((ref) => {
-          ref.docChanges().forEach((change) => {
-            const { newIndex, oldIndex, doc, type } = change;
-            if (type === "added") {
-              this.collections.push(doc.data());
-            } else if (type === "modified") {
-              this.collections.splice(oldIndex, 1);
-              this.collections.splice(newIndex, 0, doc.data());
-            } else if (type === "removed") {
-              this.collections.splice(oldIndex, 1);
-            }
-          });
-        });
     },
   },
 };
