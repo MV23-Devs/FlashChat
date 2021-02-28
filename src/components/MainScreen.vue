@@ -1,7 +1,7 @@
 <template>
     <div id="main">
         <h1>FLASH CHAT </h1>
-        <v-btn elevation="24" outlined raised tile v-on:click="goToVideoPage" >Join a Meeting</v-btn>
+        <button  v-on:click="goToVideoPage" >Join a Meeting</button>
     </div>
 </template>
  
@@ -24,7 +24,7 @@
 
 <style scoped>
 button {
-    margin: 5px;
+    margin: 15px;
     font-size: 30px;
     position: relative;
     padding: 20px;
@@ -32,6 +32,9 @@ button {
     padding-right: 70px;
     transition: padding 1s;
     outline: none;
+    border-radius: 50px ;
+    background-color: #efefef;
+    box-shadow: none;
 }
 
 button:hover {

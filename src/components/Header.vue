@@ -1,8 +1,8 @@
 <template>
   <div id="header">
     <div class="logged">
-      <span v-if="loggedIn">Logged in as {{ this.user.email }}  <v-btn large @click="signOut">Sign Out</v-btn></span>
-      <span v-else>You are not logged in <v-btn large @click="signIn">Sign In</v-btn></span>
+      <span v-if="loggedIn">Logged in as {{ this.user.email }}  <button class="logBtns" @click="signOut">Sign Out</button></span>
+      <span v-else>You are not logged in <button  class="logBtns" @click="signIn">Sign In</button></span>
     </div>
   </div>
 </template>

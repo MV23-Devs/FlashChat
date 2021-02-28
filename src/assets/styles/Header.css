@@ -8,20 +8,23 @@
     color: white;
 }
 
-button {
+.logBtns {
+    color: deepskyblue;
     margin: 5px;
     position: relative;
     border-radius: 20px;
     border: 0px solid #000;
     padding: 10px;
+    font-size: 15px;
     padding-left: 30px;
     padding-right: 30px;
     transition: padding 1s;
+    background-color: #fff;
     outline: none;
 }
 
 
-button:hover {
+.logBtns:hover {
     animation-fill-mode: forwards;
     padding-left: 70px;
     padding-right: 70px;
