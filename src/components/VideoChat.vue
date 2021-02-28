@@ -35,7 +35,7 @@
           id="JoinBtn"
           @click="joinEvent"
           :disabled="disableJoin"
-          >join</el-button
+          >Join</el-button
         >
         <br />
         <el-button
@@ -45,7 +45,7 @@
           :disabled="!disableJoin"
           class="Buttons1"
           id="LeaveBtn"
-          >leave</el-button
+          >Leave</el-button
         >
       </div>
     </div>
@@ -142,7 +142,6 @@ export default {
       this.rtc
         .leaveChannel()
         .then(() => {
-
           this.$message({
             message: "Leave Success",
             type: "success",
@@ -256,8 +255,6 @@ export default {
   margin: 20px;
 }
 
-
-
 .Buttons1 {
   margin: 5px;
   position: relative;
@@ -279,11 +276,9 @@ export default {
   background-color: deepskyblue;
 }
 
-
 #LeaveBtn {
   color: deepskyblue;
 }
-
 </style>
 
 <style>

@@ -9,19 +9,20 @@
 
 
     <router-view />
-    <!-- <Footer></Footer> -->
+    <Footer id="foot"></Footer>
   </div>
 </template>
 
 <script>
 
 import Header from "./components/Header"
-// import Footer from "./components/Footer"
+import Footer from "./components/Footer"
 import { firebase } from '@firebase/app'
 import "firebase/auth"
 export default {
   components: {
     Header,
+    Footer,
   },
   mounted() {
     firebase.auth().onAuthStateChanged(function (user) {
@@ -69,6 +70,12 @@ export default {
 #nav a.router-link-exact-active {
   color: #42b983;
 } */
+
+#foot {
+  position: absolute;
+  bottom: 0px;
+}
+
 </style>
 
 <style src="./assets/styles/Nav.css"  ></style>

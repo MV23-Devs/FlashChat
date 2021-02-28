@@ -6,12 +6,12 @@
 
     <form @submit.prevent="pressed">
       <div class="email">
-        <input type="email" v-model="email" placeholder="Email:" />
+        <input type="email" class="inputField" v-model="email" placeholder="Email:" />
       </div>
       <div class="password">
-        <input type="password" v-model="password" placeholder="Password:" />
+        <input type="password" class="inputField" v-model="password" placeholder="Password:" />
       </div>
-      <button type="submit">Register</button>
+      <button id="RegisterBtn" type="submit">Register</button>
     </form>
   </div>
 </template>
@@ -47,6 +47,10 @@ export default {
   },
 };
 </script>
+
+<style src="../assets/styles/Register.css" scoped>
+
+</style>
 
 <style>
 .error {
