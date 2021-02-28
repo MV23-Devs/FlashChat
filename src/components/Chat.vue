@@ -1,6 +1,8 @@
- <template>
+<template>
     <div>
-        <ul> 
+        <h2>Guesses:</h2>
+        <ul v-for="item in userInputs" :key="userInputs.indexOf(item)"> 
+            <li>{{ item }}</li>
         </ul>    
         <form @submit.prevent = "checkAnswer" id = 'answerForm'>
             <label>Enter Answer Here:</label>
@@ -70,7 +72,7 @@
                 console.log(this.answer);
                 this.inputRecords(this.userInput);
                 if (this.userInput === this.answer) {
-                    //NEED TO ADD STUFF
+                    this.inputRecords("YOU GOT THE ANSWER!");
                     console.log("That was correct!");
                 }
             }
