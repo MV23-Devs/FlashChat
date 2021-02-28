@@ -40,13 +40,11 @@ body {
     display: inline-block;
     border: 0px solid white;
 
-    transition: border-bottom 0.25s;
     border-bottom: 10px solid transparent;
 
 }
 
 .NavButtons:hover {
-    transition: border-bottom 0.25s;
     border-bottom: 10px solid white;
     display: inline-block;
 
