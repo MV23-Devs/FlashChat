@@ -10,7 +10,27 @@
             <br>
             <button id="submitBtn">Check Answer!</button>
         </form>
+        <table>
+        <thead>
+            <tr>
+                <th>Player name</th>
+                <th>Player points</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{this.user}}</td>
+                <td>{{this.userPoints}}</td>
+            </tr>
+            <tr>
+                <td>saarang.bondalapati@gmail.com</td>
+                <td>500</td>
+            </tr>
+        </tbody>
+
+    </table>   
     </div>
+     
  
 </template>
 
@@ -99,6 +119,18 @@
                 .update({ points: pointsWon })
                 .then(() => {
                     console.log("Firebase Points Updated Successfully: ")
+                })
+            },
+
+            updateTable() {
+                firebase
+                .firestore()
+                .collection("accounts")
+                .doc(firebase.auth().currentUser.email)
+                .get()
+                .then(doc => {
+                    this.userPoints = doc.data().points;
+                    this.user = doc.data().email;
                 })
             }
 
