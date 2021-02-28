@@ -1,6 +1,6 @@
 <template>
   <div class="login">
-    <h1>Collection</h1>
+    <h1 id="titleCollection">Collection</h1>
     <div id="CollectionMain">
     <h3>Create a New Collection</h3>
     <form @submit.prevent="pressed2">
