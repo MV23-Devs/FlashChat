@@ -273,8 +273,9 @@ export default {
             .doc("gummosucc")
             .collection("players")
             .doc(firebase.auth().currentUser.email)
-            .update({ points: this.userPoints });
-          console.log("Hello" + this.userPoints);
+            .update({ points: this.userPoints }).then(() => {
+                this.updateTable();
+            });
         });
     },
 
@@ -282,6 +283,8 @@ export default {
       firebase
         .firestore()
         .collection("sessions")
+        .doc("gummosucc")
+        .collection("players")
         .doc(firebase.auth().currentUser.email)
         .get()
         .then((doc) => {
