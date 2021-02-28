@@ -57,6 +57,7 @@ export default {
   methods: {
     nextCard() {},
     flipCard() {
+      document.getElementById("card").addClass("addedclass");
       this.cardHidden = !this.cardHidden;
     },
   },

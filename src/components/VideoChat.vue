@@ -38,16 +38,28 @@
           >Join</el-button
         >
         <br />
-        <el-button
+        <!-- <el-button
           type="primary"
           @click="leaveEvent"
           plain
           :disabled="!disableJoin"
           class="Buttons1"
           id="LeaveBtn"
-          >Leave</el-button
-        >
+          >Leave
+        </el-button> -->
       </div>
+    </div>
+    <el-button
+      type="primary"
+      @click="leaveEvent"
+      plain
+      :disabled="!disableJoin"
+      class="Buttons1"
+      id="LeaveBtn"
+      >Leave
+    </el-button>
+    <div id="meetingControls">
+      <button @click="disableVideo">Disable Video</button>
     </div>
     <div class="agora-view">
       <div class="agora-video">
@@ -97,6 +109,9 @@ export default {
   },
 
   methods: {
+    disableVideo() {
+      
+    },
     joinEvent() {
       document.getElementById("MainBox").style.display = "none";
       this.$parent.showNotVideo()
@@ -136,10 +151,12 @@ export default {
           log("join channel error", err);
         });
       this.disableJoin = true;
+      console.log("disableJoin = true")
     },
     leaveEvent() {
       this.$router.push("/");
       this.disableJoin = false;
+      console.log("disableJoin = false")
       this.rtc
         .leaveChannel()
         .then(() => {
@@ -280,6 +297,8 @@ export default {
 
 #LeaveBtn {
   color: deepskyblue;
+  display: block;
+  margin: auto;
 }
 </style>
 

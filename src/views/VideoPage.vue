@@ -2,7 +2,10 @@
 <template>
   <div id="VideoPage">
     <VideoChat id="vidChat" msg="Flash Study" />
+    
     <div id="notVideo">
+      <v-btn id = "muteButton" v-if = "micOn" v-on:click="mute"><img src = "../assets/microphone.png" width = "24" height = "24"/></v-btn>
+      <v-btn id = "muteButton" v-else v-on:click="mute"><img src = "../assets/microphone-off.png" width = "24" height = "24"/></v-btn>
       <Flashcard class="stackedElement" />
 
       <h2>Guesses:</h2>
@@ -70,7 +73,6 @@
 <script>
 import VideoChat from "../components/VideoChat.vue";
 import Flashcard from "../components/Flashcard.vue";
-
 import { firebase } from "@firebase/app";
 import "firebase/auth";
 
@@ -117,9 +119,14 @@ export default {
       user: "",
       userInput: "",
       userPoints: 0,
+      micOn: true,
     };
   },
   methods: {
+    mute() {
+      console.log("Mute was called");
+      this.micOn = !this.micOn;
+    },
     showNotVideo() {
       document.getElementById("notVideo").style.display = "inline-block";
     },

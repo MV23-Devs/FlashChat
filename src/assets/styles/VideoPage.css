@@ -7,12 +7,24 @@
     background-color: #ddd;
 }
 
+#muteButton {
+    height: 60px !important;
+    width: 60px !important;
+    background-color: deepskyblue;
+    border-radius: 50%;
+    box-shadow: none;
+
+}
+
 #notVideo {
+    margin-top: 40px;
     display: none;
+    position: relative;
 }
 
 #vidChat {
-    width: 100%;
+    display: inline-block;
+    max-width: 70%;
 }
 
 .stackedElement {
@@ -20,6 +32,10 @@
     width: 20%;
     min-width: 400px;
     margin-bottom: 30px;
+}
+
+#VideoPage {
+    display: inline-flex;
 }
 
 #VideoPageCustomArea {
