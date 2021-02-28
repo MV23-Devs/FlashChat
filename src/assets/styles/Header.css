@@ -18,15 +18,17 @@
     font-size: 15px;
     padding-left: 30px;
     padding-right: 30px;
-    transition: padding 1s;
+    transition: box-shadow 0.2s;
     background-color: #fff;
     outline: none;
+    box-shadow: none;
 }
 
 
 .logBtns:hover {
     animation-fill-mode: forwards;
-    padding-left: 70px;
-    padding-right: 70px;
-    transition: padding 1s;
+    /* padding-left: 70px;
+    padding-right: 70px; */
+    box-shadow: #888 0px 0px 20px;
+    transition: box-shadow 0.2s;
 }
