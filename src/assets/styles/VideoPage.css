@@ -145,3 +145,11 @@
     padding-right: 55px;
     transition: padding 1s;
 }
+
+
+#chooseCollection {
+    margin: 20px;
+    padding: 50px;
+    border-radius: 29px;
+    background-color: #ddd;
+}

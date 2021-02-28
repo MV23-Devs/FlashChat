@@ -3,37 +3,38 @@
   <div id="VideoPage">
     <VideoChat id="vidChat" msg="Flash Study" />
 
-    <h3>Choose Collection to Submit</h3>
-    <select id="DropdownMenu" v-model="current" @change.prevent="opened">
-      <option id="DropdownOptions" v-for="item in collections" :key="item.name">
-        {{ item.name }}
-      </option>
-    </select>
-
+    <!-- mute -->
+    <v-btn id="muteButton" class="iconButtons" v-if="micOn" v-on:click="mute"
+      ><img src="../assets/microphone.png" width="24" height="24"
+    /></v-btn>
+    <v-btn id="muteButton" class="iconButtons" v-else v-on:click="mute"
+      ><img src="../assets/microphone-off.png" width="24" height="24"
+    /></v-btn>
+    <!-- video  -->
+    <v-btn
+      id="cameraButton"
+      class="iconButtons"
+      v-if="camOn"
+      v-on:click="cameraFlip"
+      ><img src="../assets/camera.png" width="24" height="24"
+    /></v-btn>
+    <v-btn id="cameraButton" class="iconButtons" v-else v-on:click="cameraFlip"
+      ><img src="../assets/camera-off.png" width="24" height="24"
+    /></v-btn>
     <div id="notVideo">
-      <!-- mute -->
-      <v-btn id="muteButton" class="iconButtons" v-if="micOn" v-on:click="mute"
-        ><img src="../assets/microphone.png" width="24" height="24"
-      /></v-btn>
-      <v-btn id="muteButton" class="iconButtons" v-else v-on:click="mute"
-        ><img src="../assets/microphone-off.png" width="24" height="24"
-      /></v-btn>
-      <!-- video  -->
-      <v-btn
-        id="cameraButton"
-        class="iconButtons"
-        v-if="camOn"
-        v-on:click="cameraFlip"
-        ><img src="../assets/camera.png" width="24" height="24"
-      /></v-btn>
-      <v-btn
-        id="cameraButton"
-        class="iconButtons"
-        v-else
-        v-on:click="cameraFlip"
-        ><img src="../assets/camera-off.png" width="24" height="24"
-      /></v-btn>
-
+      <div id="chooseCollection">
+        <h3>Choose Collection to Submit</h3>
+        <select id="DropdownMenu" v-model="current" @change.prevent="opened">
+          <option
+            id="DropdownOptions"
+            v-for="item in collections"
+            :key="item.name"
+          >
+            {{ item.name }}
+          </option>
+        </select>
+      </div>
+      <h2>Current FlashCard</h2>
       <Flashcard class="stackedElement" />
 
       <h2>Guesses:</h2>
