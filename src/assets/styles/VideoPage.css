@@ -1,0 +1,79 @@
+#chat {
+    display: inline;
+    border: 1px solid black;
+    float: right;
+}
+
+#vidChat {
+    width: 100%;
+}
+
+#VideoPageCustomArea {
+    width: 30%;
+    padding: 40px;
+    border-radius: 20px;
+    background-color: #ddd;
+    display: inline-block;
+}
+
+
+
+#DropdownMenu {
+    min-width: 70px;
+    background-color: white;
+    border-radius: 20px;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    outline: 1px solid deepskyblue;
+    outline: none;
+    
+
+}
+
+#DropdownMenu:active {
+    background-color: white;
+    border-radius: 20px;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+
+    outline: 1px solid deepskyblue;
+    outline:none;
+    
+
+}
+
+#DropdownOptions {
+    background-color: white;
+    border: 0px solid white;
+    outline:none;
+
+}
+
+#shuffleBtn {
+    margin: 15px;
+    color: white;
+    margin: 5px;
+    position: relative;
+    border-radius: 20px;
+    border: 0px solid #000;
+    padding: 10px;
+    font-size: 15px;
+    padding-left: 30px;
+    padding-right: 30px;
+    transition: padding 1s;
+    outline: none;
+    background-color: deepskyblue;
+    color:white;
+    margin-bottom: 30px;
+}
+
+#shuffleBtn:hover {
+    animation-fill-mode: forwards;
+    padding-left: 55px;
+    padding-right: 55px;
+    transition: padding 1s;
+}

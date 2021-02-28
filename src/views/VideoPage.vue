@@ -4,22 +4,23 @@
     <VideoChat id="vidChat" msg="Flash Study" />
     <Flashcard />
     <Chat id="chat" />
-    
 
-    <h3>View Collection</h3>
-    <select v-model="current" @change.prevent="opened">
-      <option v-for="item in collections" :key="item.name">
-        {{ item.name }}
-      </option>
-    </select>
+    <div id="VideoPageCustomArea">
+      <h3>View Collection</h3>
+      <select id="DropdownMenu" v-model="current" @change.prevent="opened">
+        <option id="DropdownOptions" v-for="item in collections" :key="item.name">
+          {{ item.name }}
+        </option>
+      </select>
 
-    <ul>
-      <li v-for="card in cards" :key="card.key">
-        {{ card.key }} | {{ card.val }}
-      </li>
-    </ul>
+      <ul>
+        <li v-for="card in cards" :key="card.key">
+          {{ card.key }} | {{ card.val }}
+        </li>
+      </ul>
 
-    <button @click="shuffle">Shuffle</button>
+      <button id="shuffleBtn" @click="shuffle">Shuffle</button>
+    </div>
   </div>
 </template>
 
@@ -57,12 +58,12 @@ export default {
   },
   methods: {
     shuffle() {
-        console.log(this.cards)
-        for (let i = this.cards.length - 1; i > 0; i--) {
+      console.log(this.cards);
+      for (let i = this.cards.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [this.cards[i], this.cards[j]] = [this.cards[j], this.cards[i]];
-        console.log(this.cards)
-    }
+        console.log(this.cards);
+      }
     },
     opened() {
       this.open = true;
@@ -118,13 +119,5 @@ export default {
 };
 </script>
 
-<style scoped>
-#chat {
-  display: inline;
-  border: 1px solid black;
-  float: right;
-}
-#vidChat {
-  width: 100%;
-}
+<style scoped src="../assets/styles/VideoPage.css">
 </style>
