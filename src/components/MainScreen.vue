@@ -33,7 +33,7 @@ button {
     transition: padding 1s;
     outline: none;
     border-radius: 50px ;
-    background-color: #efefef;
+    background-color: deepskyblue !important;
     box-shadow: none;
     color: white;
 }
