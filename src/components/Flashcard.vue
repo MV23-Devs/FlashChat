@@ -43,7 +43,7 @@
           .collection("collections")
           .doc("Test")
           .collection("cards")
-          .doc("Fad9GLEXNnxbnNxbeF1J")
+          .doc("test2")
           .get()
           .then(doc => {
             console.log(doc.data());
@@ -51,6 +51,20 @@
             this.answer = doc.data().val;
             console.log(this.cardname, this.answer);
           })
+        },
+
+        methods: {
+          nextCard() {
+
+
+
+
+          }
+
+          
+
+
         }
+
     }
  </script>

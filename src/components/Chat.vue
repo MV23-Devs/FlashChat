@@ -1,7 +1,7 @@
 <template>
     <div>
         <h2>Guesses:</h2>
-        <ul v-for="item in userInputs" :key="userInputs.indexOf(item)"> 
+        <ul v-for="item in userInputs" :key="userInputs.indexOf(item)" style="list-style-type:none;"> 
             <li>{{ item }}</li>
         </ul>    
         <form @submit.prevent = "checkAnswer" id = 'answerForm'>
@@ -28,7 +28,8 @@
           return {
             userInputs: [],
             answer: "",
-            userInput: ""
+            userInput: "",
+            userPoints: 0
           }
         },
         mounted() {
@@ -39,7 +40,7 @@
           .collection("collections")
           .doc("Test")
           .collection("cards")
-          .doc("Fad9GLEXNnxbnNxbeF1J")
+          .doc("test2")
           .get()
           .then(doc => {
             console.log(doc.data());
@@ -61,7 +62,7 @@
                 .collection("collections")
                 .doc("Test")
                 .collection("cards")
-                .doc("Fad9GLEXNnxbnNxbeF1J")
+                .doc("test2")
                 .get()
                 .then(doc => {
                     console.log(doc.data());
@@ -73,9 +74,29 @@
                 this.inputRecords(this.userInput);
                 if (this.userInput === this.answer) {
                     this.inputRecords("YOU GOT THE ANSWER!");
+                    this.addPoints(500);
                     console.log("That was correct!");
                 }
+            },
+            //remember to reset points if router path goes back to root
+            addPoints(pointsWon) {
+                this.userPoints += pointsWon;
+                firebase
+                .firestore()
+                .collection("accounts")
+                .doc(firebase.auth().currentUser.email)
+                .doc("points")
+                .get()
+                .then(doc => {
+                    console.log(doc.data());
+                    doc.data().points += this.pointsWon;
+                    console.log(doc.data().points);
+                })
+
             }
+
+            
+
             
 
         }
