@@ -9,20 +9,19 @@
 
 
     <router-view />
-    <Footer></Footer>
+    <!-- <Footer></Footer> -->
   </div>
 </template>
 
 <script>
 
 import Header from "./components/Header"
-import Footer from "./components/Footer"
+// import Footer from "./components/Footer"
 import { firebase } from '@firebase/app'
 import "firebase/auth"
 export default {
   components: {
     Header,
-    Footer
   },
   mounted() {
     firebase.auth().onAuthStateChanged(function (user) {
