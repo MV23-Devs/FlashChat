@@ -74,6 +74,7 @@ select {
     padding-right: 10px;
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
+    border-bottom: none;
 
     outline: 1px solid deepskyblue;
     outline:none;

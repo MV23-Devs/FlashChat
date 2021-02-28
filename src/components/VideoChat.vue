@@ -99,6 +99,7 @@ export default {
   methods: {
     joinEvent() {
       document.getElementById("MainBox").style.display = "none";
+      this.$parent.showNotVideo()
 
       if (!this.option.appid) {
         this.judge("Appid");

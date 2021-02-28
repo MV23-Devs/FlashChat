@@ -1,11 +1,25 @@
 #chat {
-    display: inline;
-    border: 1px solid black;
-    float: right;
+    display: block;
+    border: 0px solid black;
+    min-width: 400px;;
+    padding: 40px;
+    border-radius: 20px;
+    background-color: #ddd;
+}
+
+#notVideo {
+    display: none;
 }
 
 #vidChat {
     width: 100%;
+}
+
+.stackedElement {
+    display: block !important;
+    width: 20%;
+    min-width: 400px;
+    margin-bottom: 30px;
 }
 
 #VideoPageCustomArea {
@@ -13,7 +27,7 @@
     padding: 40px;
     border-radius: 20px;
     background-color: #ddd;
-    display: inline-block;
+    display: block;
 }
 
 

@@ -2,24 +2,30 @@
 <template>
   <div id="VideoPage">
     <VideoChat id="vidChat" msg="Flash Study" />
-    <Flashcard />
-    <Chat id="chat" />
+    <div id="notVideo">
+      <Flashcard class="stackedElement" />
+      <Chat class="stackedElement" id="chat" />
 
-    <div id="VideoPageCustomArea">
-      <h3>View Collection</h3>
-      <select id="DropdownMenu" v-model="current" @change.prevent="opened">
-        <option id="DropdownOptions" v-for="item in collections" :key="item.name">
-          {{ item.name }}
-        </option>
-      </select>
+      <div id="VideoPageCustomArea" class="stackedElement">
+        <h3>View Collection</h3>
+        <select id="DropdownMenu" v-model="current" @change.prevent="opened">
+          <option
+            id="DropdownOptions"
+            v-for="item in collections"
+            :key="item.name"
+          >
+            {{ item.name }}
+          </option>
+        </select>
 
-      <ul>
-        <li v-for="card in cards" :key="card.key">
-          {{ card.key }} | {{ card.val }}
-        </li>
-      </ul>
+        <ul>
+          <li v-for="card in cards" :key="card.key">
+            {{ card.key }} | {{ card.val }}
+          </li>
+        </ul>
 
-      <button id="shuffleBtn" @click="shuffle">Shuffle</button>
+        <button id="shuffleBtn" @click="shuffle">Shuffle</button>
+      </div>
     </div>
   </div>
 </template>
@@ -57,6 +63,9 @@ export default {
     };
   },
   methods: {
+    showNotVideo() {
+      document.getElementById("notVideo").style.display = "inline-block";
+    },
     shuffle() {
       console.log(this.cards);
       for (let i = this.cards.length - 1; i > 0; i--) {
