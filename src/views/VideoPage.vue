@@ -189,30 +189,7 @@ export default {
       this.load();
     },
     async load() {
-      firebase
-      .firestore()
-      .collection("sessions")
-      .doc("gummosucc")
-      .collection("players")
-      .doc("popovich@gmail.com")
-      .onSnapshot((ref) => {
-          console.log(ref);
-          ref.docChanges().forEach((change) => {
-            const { type } = change;
-            if (type === "added") {
-              console.log("added");
-            } else if (type === "modified") {
-              console.log("modified");
-              this.opponentPoints = this.opponentPoints + 500;
-              // updateTable();
-            } else if (type === "removed") {
-              console.log("removed");
-            }
-          });
-        })
-      .catch(err => {
-        console.log(err)
-      })
+      
       const user = await firebase.auth().currentUser;
       console.log(user);
       if (user) {
