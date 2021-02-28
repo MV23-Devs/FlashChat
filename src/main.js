@@ -7,6 +7,7 @@ import { firebase } from '@firebase/app'
 import 'firebase/auth'
 import 'firebase/firestore'
 import vuetify from './plugins/vuetify';
+import store from "./store";
 
 // firebase init - add your own config here
 // const firebaseConfig = {
@@ -31,7 +32,6 @@ var firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig)
 
-
 Vue.use(ElementUI);
 
 Vue.config.productionTip = false
@@ -39,6 +39,7 @@ Vue.config.productionTip = false
 
 new Vue({
   router,
+  store,
   vuetify,
   render: h => h(App)
 }).$mount('#app') 

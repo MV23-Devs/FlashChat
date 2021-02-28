@@ -3,6 +3,19 @@
   <div id="VideoPage">
     <VideoChat id="vidChat" msg="Flash Study" />
 
+    <div id="chooseCollection">
+      <h3>Choose Collection to Submit</h3>
+      <select id="DropdownMenu" v-model="current" @change.prevent="opened">
+        <option
+          id="DropdownOptions"
+          v-for="item in collections"
+          :key="item.name"
+        >
+          {{ item.name }}
+        </option>
+      </select>
+    </div>
+
     <div id="notVideo">
       <!-- mute -->
       <v-btn id="muteButton" class="iconButtons" v-if="micOn" v-on:click="mute"
@@ -26,19 +39,6 @@
         v-on:click="cameraFlip"
         ><img src="../assets/camera-off.png" width="24" height="24"
       /></v-btn>
-
-      <div id="chooseCollection">
-        <h3>Choose Collection to Submit</h3>
-        <select id="DropdownMenu" v-model="current" @change.prevent="opened">
-          <option
-            id="DropdownOptions"
-            v-for="item in collections"
-            :key="item.name"
-          >
-            {{ item.name }}
-          </option>
-        </select>
-      </div>
       <h2>Current FlashCard</h2>
       <Flashcard class="stackedElement" />
       <hr id="spacedHr" />
@@ -79,25 +79,13 @@
         </tbody>
       </table>
 
-      <!-- class="stackedElement" -->
+      <ul>
+        <li v-for="card in cards" :key="card.key">
+          {{ card.key }} | {{ card.val }}
+        </li>
+      </ul>
 
-      <!-- id="DropdownOptions" -->
-      <div id="VideoPageCustomArea">
-        <h3>View Collection</h3>
-        <select id="DropdownMenu" v-model="current" @change.prevent="opened">
-          <option v-for="item in collections" :key="item.name">
-            {{ item.name }}
-          </option>
-        </select>
-
-        <ul>
-          <li v-for="card in cards" :key="card.key">
-            {{ card.key }} | {{ card.val }}
-          </li>
-        </ul>
-
-        <button id="shuffleBtn" @click="shuffle">Shuffle</button>
-      </div>
+      <button id="shuffleBtn" @click="shuffle">Shuffle</button>
     </div>
   </div>
 </template>
@@ -253,31 +241,14 @@ export default {
       console.log(this.userInputs);
     },
     checkAnswer() {
-      console.log(this.current, this.ccurrent);
-      firebase
-        .firestore()
-        .collection("accounts")
-        .doc(firebase.auth().currentUser.email)
-        .collection("collections")
-        .doc("Test")
-        .collection("cards")
-        .doc("test2")
-        .get()
-        .then((doc) => {
-          console.log(doc.data());
-          let answer = doc.data().val;
-          return answer;
-        })
-        .then((answer) => {
-          console.log(this.userInput);
-          console.log("Answer: " + answer);
-          this.inputRecords(this.userInput);
-          if (this.userInput === answer) {
-            this.inputRecords("YOU GOT THE ANSWER!");
-            this.addPoints();
-            console.log("That was correct!");
-          }
-        });
+      console.log(this.userInput);
+      console.log("Answer: " + this.$store.state.answer);
+      this.inputRecords(this.userInput);
+      if (this.userInput === this.$store.state.answer) {
+        this.inputRecords("YOU GOT THE ANSWER!");
+        this.addPoints();
+        console.log("That was correct!");
+      }
     },
     //remember to reset points if router path goes back to root
     addPoints() {

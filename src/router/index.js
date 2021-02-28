@@ -6,6 +6,7 @@ import Register from '../views/Register.vue'
 import VideoPage from '../views/VideoPage.vue'
 import Collection from "../views/Collection.vue"
 
+
 import { firebase } from '@firebase/app'
 import "firebase/auth";
 
@@ -58,5 +59,6 @@ router.beforeEach((to, from, next) => {
     next();
   }
 });
+
 
 export default router
