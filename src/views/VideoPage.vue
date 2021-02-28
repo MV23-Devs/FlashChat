@@ -2,14 +2,30 @@
 <template>
   <div id="VideoPage">
     <VideoChat id="vidChat" msg="Flash Study" />
-    
+
     <div id="notVideo">
       <!-- mute -->
-      <v-btn id = "muteButton" class="iconButtons" v-if = "micOn" v-on:click="mute"><img src = "../assets/microphone.png" width = "24" height = "24"/></v-btn>
-      <v-btn id = "muteButton" class="iconButtons" v-else v-on:click="mute"><img src = "../assets/microphone-off.png" width = "24" height = "24"/></v-btn>
+      <v-btn id="muteButton" class="iconButtons" v-if="micOn" v-on:click="mute"
+        ><img src="../assets/microphone.png" width="24" height="24"
+      /></v-btn>
+      <v-btn id="muteButton" class="iconButtons" v-else v-on:click="mute"
+        ><img src="../assets/microphone-off.png" width="24" height="24"
+      /></v-btn>
       <!-- video  -->
-      <v-btn id = "cameraButton" class="iconButtons" v-if = "camOn" v-on:click="cameraFlip"><img src = "../assets/camera.png" width = "24" height = "24"/></v-btn>
-      <v-btn id = "cameraButton" class="iconButtons" v-else v-on:click="cameraFlip"><img src = "../assets/camera-off.png" width = "24" height = "24"/></v-btn>
+      <v-btn
+        id="cameraButton"
+        class="iconButtons"
+        v-if="camOn"
+        v-on:click="cameraFlip"
+        ><img src="../assets/camera.png" width="24" height="24"
+      /></v-btn>
+      <v-btn
+        id="cameraButton"
+        class="iconButtons"
+        v-else
+        v-on:click="cameraFlip"
+        ><img src="../assets/camera-off.png" width="24" height="24"
+      /></v-btn>
 
       <Flashcard class="stackedElement" />
 
@@ -50,14 +66,13 @@
         </tbody>
       </table>
 
-      <div id="VideoPageCustomArea" class="stackedElement">
+      <!-- class="stackedElement" -->
+
+      <!-- id="DropdownOptions" -->
+      <div id="VideoPageCustomArea">
         <h3>View Collection</h3>
         <select id="DropdownMenu" v-model="current" @change.prevent="opened">
-          <option
-            id="DropdownOptions"
-            v-for="item in collections"
-            :key="item.name"
-          >
+          <option v-for="item in collections" :key="item.name">
             {{ item.name }}
           </option>
         </select>
@@ -158,56 +173,62 @@ export default {
       this.load();
     },
     async load() {
-      const user = await firebase.auth().currentUser.email;
+      const user = await firebase.auth().currentUser;
+      console.log(user);
       if (user) {
-        console.log("test");
-        if (this.open) {
-          this.cards = [];
+        if (user.email) {
+          console.log("test");
+          if (this.open) {
+            this.cards = [];
+            firebase
+              .firestore()
+              .collection("accounts")
+              .doc(firebase.auth().currentUser.email)
+              .collection("collections")
+              .doc(this.current)
+              .collection("cards")
+              .onSnapshot((ref) => {
+                ref.docChanges().forEach((change) => {
+                  const { newIndex, oldIndex, doc, type } = change;
+                  if (type === "added") {
+                    this.cards.push({
+                      key: doc.data().key,
+                      val: doc.data().val,
+                    });
+                    console.log(this.cards);
+                    console.log("test3");
+                  } else if (type === "modified") {
+                    this.cards.splice(oldIndex, 1);
+                    this.cards.splice(newIndex, 0, doc.data());
+                  } else if (type === "removed") {
+                    this.cards.splice(oldIndex, 1);
+                  }
+                });
+              });
+            this.shuffle();
+          }
+          this.collections = [];
           firebase
             .firestore()
             .collection("accounts")
             .doc(firebase.auth().currentUser.email)
             .collection("collections")
-            .doc(this.current)
-            .collection("cards")
             .onSnapshot((ref) => {
               ref.docChanges().forEach((change) => {
                 const { newIndex, oldIndex, doc, type } = change;
                 if (type === "added") {
-                  this.cards.push({ key: doc.data().key, val: doc.data().val });
-                  console.log(this.cards);
-                  console.log("test3");
+                  this.collections.push(doc.data());
+                  console.log("test2");
+                  console.log("Collections: " + this.collections);
                 } else if (type === "modified") {
-                  this.cards.splice(oldIndex, 1);
-                  this.cards.splice(newIndex, 0, doc.data());
+                  this.collections.splice(oldIndex, 1);
+                  this.collections.splice(newIndex, 0, doc.data());
                 } else if (type === "removed") {
-                  this.cards.splice(oldIndex, 1);
+                  this.collections.splice(oldIndex, 1);
                 }
               });
             });
-          this.shuffle();
         }
-        this.collections = [];
-        firebase
-          .firestore()
-          .collection("accounts")
-          .doc(firebase.auth().currentUser.email)
-          .collection("collections")
-          .onSnapshot((ref) => {
-            ref.docChanges().forEach((change) => {
-              const { newIndex, oldIndex, doc, type } = change;
-              if (type === "added") {
-                this.collections.push(doc.data());
-                console.log("test2");
-                console.log("Collections: " + this.collections);
-              } else if (type === "modified") {
-                this.collections.splice(oldIndex, 1);
-                this.collections.splice(newIndex, 0, doc.data());
-              } else if (type === "removed") {
-                this.collections.splice(oldIndex, 1);
-              }
-            });
-          });
       }
     },
     inputRecords(input) {
@@ -226,18 +247,20 @@ export default {
         .doc("test2")
         .get()
         .then((doc) => {
-            console.log(doc.data())
-          this.answer = doc.data();
-          console.log(this.answer);
+          console.log(doc.data());
+          let answer = doc.data().val;
+          return answer;
+        })
+        .then((answer) => {
+          console.log(this.userInput);
+          console.log("Answer: " + answer);
+          this.inputRecords(this.userInput);
+          if (this.userInput === answer) {
+            this.inputRecords("YOU GOT THE ANSWER!");
+            this.addPoints(500);
+            console.log("That was correct!");
+          }
         });
-      console.log(this.userInput);
-      console.log("Answer: " + this.answer);
-      this.inputRecords(this.userInput);
-      if (this.userInput === this.answer) {
-        this.inputRecords("YOU GOT THE ANSWER!");
-        this.addPoints(500);
-        console.log("That was correct!");
-      }
     },
     //remember to reset points if router path goes back to root
     addPoints(pointsWon) {
