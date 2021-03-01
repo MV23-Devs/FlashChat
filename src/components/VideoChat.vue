@@ -91,7 +91,7 @@ export default {
       option: {
         appid: "1e7239def2b44918b997b976d7279519",
         token:
-          "0061e7239def2b44918b997b976d7279519IADJuEL0a2/H3OfG5GHi7XBVGxn5dbgDob//Svd3sWEErkUbCc4AAAAAEAAdwi3RiX08YAEAAQCJfTxg",
+          "0061e7239def2b44918b997b976d7279519IADTKutYS2D5gtzhmU/RpdRHgELBxiLEl4qozW8xaU9kXZ5wcHYAAAAAEAAdwi3RvYU9YAEAAQC8hT1g",
         uid: null,
         channel: "",
       },
