@@ -68,13 +68,9 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Jason</td>
-            <td>{{ this.userPoints }}</td>
-          </tr>
-          <tr>
-            <td>Saarang</td>
-            <td>{{opponentPoints}}</td>
+          <tr v-for="item in players" :key="players.indexOf(item)">
+            <td>{{ item.email }}</td>
+            <td>{{ item.points }}</td>
           </tr>
         </tbody>
       </table>
@@ -144,18 +140,18 @@ export default {
       micOn: true,
       camOn: true,
       players: [
-          {
-              email: "test@gmail.com",
-              points: 0,
-          },
-          {
-              email: "jzscuba@gmail.com",
-              points: 300,
-          },
-          {
-              email: "100025319@gmail.com",
-              points: -100,
-          },
+        {
+            email: "test@gmail.com",
+            points: 0,
+        },
+        {
+            email: "jzscuba@gmail.com",
+            points: 300,
+        },
+        {
+            email: "100025319@gmail.com",
+            points: -100,
+        },
       ]
     };
   },
