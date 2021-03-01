@@ -74,7 +74,7 @@
           </tr>
           <tr>
             <td>Saarang</td>
-            <td>{{opponentPoints}}</td>
+            <td>{{ opponentPoints }}</td>
           </tr>
         </tbody>
       </table>
@@ -144,19 +144,19 @@ export default {
       micOn: true,
       camOn: true,
       players: [
-          {
-              email: "test@gmail.com",
-              points: 0,
-          },
-          {
-              email: "jzscuba@gmail.com",
-              points: 300,
-          },
-          {
-              email: "100025319@gmail.com",
-              points: -100,
-          },
-      ]
+        {
+          email: "test@gmail.com",
+          points: 0,
+        },
+        {
+          email: "jzscuba@gmail.com",
+          points: 300,
+        },
+        {
+          email: "100025319@gmail.com",
+          points: -100,
+        },
+      ],
     };
   },
   methods: {
@@ -189,7 +189,6 @@ export default {
       this.load();
     },
     async load() {
-      
       const user = await firebase.auth().currentUser;
       console.log(user);
       if (user) {
@@ -228,6 +227,32 @@ export default {
               });
             this.shuffle();
           }
+
+          this.players = [];
+
+          firebase
+            .firestore()
+            .collection("sessions")
+            .doc("gummosucc")
+            .collection("players")
+            .onSnapshot((ref) => {
+              ref.docChanges().forEach((change) => {
+                const { newIndex, oldIndex, doc, type } = change;
+                if (type === "added") {
+                  this.players.push({
+                    email: doc.data().email,
+                    points: doc.data().points,
+                  });
+                  console.log("Test", this.players)
+                } else if (type === "modified") {
+                  this.players.splice(oldIndex, 1);
+                  this.players.splice(newIndex, 0, doc.data());
+                } else if (type === "removed") {
+                  this.players.splice(oldIndex, 1);
+                }
+              });
+            })
+
           this.collections = [];
           firebase
             .firestore()
@@ -278,7 +303,6 @@ export default {
         .doc(firebase.auth().currentUser.email)
         .get()
         .then((doc) => {
-          console.log("LITERALLY WIN POINTS LMAO");
           console.log(doc.data());
           this.userPoints = doc.data().points + 500;
           // points = points + doc.data().points;
@@ -289,8 +313,9 @@ export default {
             .doc("gummosucc")
             .collection("players")
             .doc(firebase.auth().currentUser.email)
-            .update({ points: this.userPoints }).then(() => {
-                this.updateTable();
+            .update({ points: this.userPoints })
+            .then(() => {
+              this.updateTable();
             });
         });
     },

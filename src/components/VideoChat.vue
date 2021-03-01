@@ -134,6 +134,7 @@ export default {
             .collection("players")
             .doc(firebase.auth().currentUser.email)
             .set({
+              email: firebase.auth().currentUser.email,
               points: 0,
             });
           this.rtc
