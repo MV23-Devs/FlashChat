@@ -190,7 +190,7 @@ export default {
                 firebase
                   .firestore()
                   .collection("sessions")
-                  .doc("gummosucc")
+                  .doc("Demo")
                   .collection("cards")
                   .get()
                   .then((querySnapshot) => {
@@ -201,7 +201,7 @@ export default {
                       firebase
                         .firestore()
                         .collection("sessions")
-                        .doc("gummosucc")
+                        .doc("Demo")
                         .collection("cards")
                         .doc(doc.id)
                         .delete();

@@ -192,7 +192,7 @@ export default {
                     firebase
                       .firestore()
                       .collection("sessions")
-                      .doc("gummosucc")
+                      .doc("Demo")
                       .collection("cards")
                       .add({
                         key: doc.data().key,
@@ -214,7 +214,7 @@ export default {
           firebase
             .firestore()
             .collection("sessions")
-            .doc("gummosucc")
+            .doc("Demo")
             .collection("players")
             .onSnapshot((ref) => {
               ref.docChanges().forEach((change) => {
@@ -279,7 +279,7 @@ export default {
       firebase
         .firestore()
         .collection("sessions")
-        .doc("gummosucc")
+        .doc("Demo")
         .collection("players")
         .doc(firebase.auth().currentUser.email)
         .get()
@@ -291,7 +291,7 @@ export default {
           firebase
             .firestore()
             .collection("sessions")
-            .doc("gummosucc")
+            .doc("Demo")
             .collection("players")
             .doc(firebase.auth().currentUser.email)
             .update({ points: this.userPoints })
@@ -305,7 +305,7 @@ export default {
       firebase
         .firestore()
         .collection("sessions")
-        .doc("gummosucc")
+        .doc("Demo")
         .collection("players")
         .doc(firebase.auth().currentUser.email)
         .get()

@@ -47,7 +47,7 @@ export default {
       firebase
         .firestore()
         .collection("sessions")
-        .doc("gummosucc")
+        .doc("Demo")
         .collection("cards")
         .onSnapshot((ref) => {
           ref.docChanges().forEach((change) => {
